@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,10 +38,10 @@ public class XiaoBing {
 	public static int answerIndex = 0;
 	public  XiaoBing(){
 		if(accessList.isEmpty()){
-			GetFileToList(accessList,"C:\\eclipse-workspace\\OnlineRobot\\access");		
+			GetFileToList(accessList,"/access");		
 		}			
 		if(noAnswer.isEmpty())
-			GetFileToList(noAnswer,"C:\\eclipse-workspace\\OnlineRobot\\noanswer.txt");
+			GetFileToList(noAnswer,"/noanswer.txt");
 		access_token = accessList.get(accessIndex);
 		accessIndex = (accessIndex+1)%accessList.size();
 		cid = "3796432685699816";
@@ -53,7 +54,7 @@ public class XiaoBing {
 	        BufferedReader reader = null;
 	        try {
 	            //System.out.println("以行为单位读取文件内容，一次读一整行：");
-	            reader = new BufferedReader(new FileReader(file));
+	            reader = new BufferedReader(new InputStreamReader(XiaoBing.class.getResourceAsStream(path)));
 	            String tempString = null;
 	            int line = 0;
 	            // 一次读入一行，直到读入null为文件结束

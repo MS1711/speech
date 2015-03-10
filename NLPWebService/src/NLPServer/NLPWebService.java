@@ -18,11 +18,11 @@ import javax.jws.WebParam;
 @WebService(serviceName = "NLPWebService")
 public class NLPWebService {
  
-    NLPCore3 nlpcore;
+    NLPCore nlpcore;
     
     
     public NLPWebService() {
-        this.nlpcore = new NLPCore3();
+        this.nlpcore = new NLPCore();
         
         //nlpcore.InitNLPCore();
     }

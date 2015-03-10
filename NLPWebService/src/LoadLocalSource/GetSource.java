@@ -14,6 +14,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.QueryOperators;
 import com.mongodb.util.JSON;
+
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,7 +27,10 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.text.Document;
+
+import properties.Config;
 
 /**
  *
@@ -35,6 +39,8 @@ import javax.swing.text.Document;
 public class GetSource {
     MongoClient mongoClient;
     DB sourceDB;
+    private String dictPath;
+    
     public static void main(String[] args)  {
         GetSource test = new  GetSource();
         test.GetLast2();
@@ -42,8 +48,9 @@ public class GetSource {
     
     public GetSource()
     {
+    	dictPath = Config.getInstance().get("model_path", "C:/dict/");
         try {
-            mongoClient = new MongoClient("127.0.0.1",27017);
+            mongoClient = new MongoClient(Config.getInstance().get("mongo_host", "127.0.0.1"), Integer.parseInt(Config.getInstance().get("mongo_port", "27017")));
             sourceDB = mongoClient.getDB("knowledgeDB");
         } catch (UnknownHostException ex) {
             System.out.println("Error in connecting to MongoDB");
@@ -54,10 +61,11 @@ public class GetSource {
     {
         mongoClient.close();
     }
+    
     public void GetVerb(){
 		DBConn verb = new DBConn();
 		DBCursor cur = verb.searchAll("commandCollection");
-		String verbDictPath = "C:\\dict\\verbdict.txt";
+		String verbDictPath = dictPath + "verbdict.txt";
 		OutputStreamWriter writer = null;
 		try {
 			writer = new OutputStreamWriter(new FileOutputStream(verbDictPath),
@@ -103,7 +111,7 @@ public class GetSource {
     public void GetDictVerb(){
         DBConn verb  = new DBConn();
         DBCursor cur =    verb.searchAll("commandCollection");
-         String verbDictPath = "C:\\dict\\dictdict.txt";       
+         String verbDictPath = dictPath + "dictdict.txt";       
             OutputStreamWriter  writer = null;
             try {
                 writer = new OutputStreamWriter(new FileOutputStream(verbDictPath),"UTF-8");
@@ -145,7 +153,7 @@ public class GetSource {
         DBConn verb  = new DBConn();
         HashMap<String,String> genreMap = new  HashMap<String,String>();
         DBCursor cur =    verb.searchAll("mediaCollection");
-        String verbDictPath = "C:\\dict\\genredict.txt";       
+        String verbDictPath = dictPath + "genredict.txt";       
         OutputStreamWriter  writer = null;
         
         try {
@@ -185,7 +193,7 @@ public class GetSource {
      public void GetHomeVerb(){
         DBConn verb  = new DBConn();
         DBCursor cur =    verb.searchAll("commandCollection");
-         String verbDictPath = "C:\\dict\\homedict.txt";       
+         String verbDictPath = dictPath + "homedict.txt";       
             OutputStreamWriter  writer = null;
             try {
                 writer = new OutputStreamWriter(new FileOutputStream(verbDictPath),"UTF-8");
@@ -448,7 +456,7 @@ public class GetSource {
 	public void GetVerb2() {//NLPCore3中使用的
 		DBConn verb = new DBConn();
 		DBCursor cur = verb.searchAll("commandCollection");
-		String verbDictPath = "C:\\dict\\verbdict2.txt";
+		String verbDictPath = dictPath + "/verbdict2.txt";
 		OutputStreamWriter writer = null;
 		try {
 			writer = new OutputStreamWriter(new FileOutputStream(verbDictPath),
@@ -502,7 +510,7 @@ public class GetSource {
 	public void GetDevice2() {
 		DBConn verb = new DBConn();
 		DBCursor cur = verb.searchAll("smartHomeCollection");
-		String verbDictPath = "C:\\dict\\devicedict2.txt";
+		String verbDictPath = dictPath + "devicedict2.txt";
 		OutputStreamWriter writer = null;
 		try {
 			writer = new OutputStreamWriter(new FileOutputStream(verbDictPath),
@@ -546,7 +554,7 @@ public class GetSource {
 	public void GetLast2() {
 		DBConn verb = new DBConn();
 		DBCursor cur = verb.searchAll("suffixCollection");
-		String verbDictPath = "C:\\dict\\lastdict2.txt";
+		String verbDictPath = dictPath + "lastdict2.txt";
 		OutputStreamWriter writer = null;
 		try {
 			writer = new OutputStreamWriter(new FileOutputStream(verbDictPath),

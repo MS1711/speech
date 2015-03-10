@@ -26,7 +26,12 @@ public class Receiver {
 	}
 
 	public static void main(String[] args) {
-		       
+		
+		if (args.length < 2) {
+			System.out.println("Usage: Receiver mq_path file_path");
+			return;
+		}
+		
         // ConnectionFactory ：连接工厂，JMS 用它创建连接
         ConnectionFactory connectionFactory;
         // Connection ：JMS 客户端到JMS Provider 的连接
@@ -40,7 +45,7 @@ public class Receiver {
         connectionFactory = new ActiveMQConnectionFactory(
                 ActiveMQConnection.DEFAULT_USER,
                 ActiveMQConnection.DEFAULT_PASSWORD,
-                "tcp://10.172.92.40:61616");
+                args[0]);
         try {
             // 构造从工厂得到连接对象
             connection = connectionFactory.createConnection();
@@ -57,7 +62,7 @@ public class Receiver {
                 TextMessage message = (TextMessage) consumer.receive(100000);
                 if (null != message) {
                     System.out.println("收到消息" + message.getText());
-                    String fileName = "D:/newTemp.txt";
+                    String fileName = args[1];
                     String content = message.getText() + "\n";
                     //content = "$MUSIC$PLAY$1.mp3";
                     //按方法B追加文件

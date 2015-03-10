@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,6 +25,7 @@ import onlinerobot.control.ControlService;
 import org.fnlp.nlp.cn.CNFactory;
 import org.fnlp.util.exception.LoadModelException;
 
+import properties.Config;
 import weather.api.WeatherService;
 import ActiveMQ.messageQueue;
 import LoadLocalSource.GetSource;
@@ -40,7 +40,7 @@ import device.control.DeviceControlProxy;
  *
  * @author v-chenfei
  */
-public class NLPCore3 {
+public class NLPCore {
     ControlService control = null;
     ControlDelegate ControlDelegate = null;
     CNFactory factory = null;
@@ -53,6 +53,7 @@ public class NLPCore3 {
     ChineseToPinyin ctp;
     ArrayList<String> deviceType;
 	private boolean inited = false;
+	String dictPath;
 	
     public static void main(String[] args)  {
     	String[] words = new String[]{
@@ -80,29 +81,30 @@ public class NLPCore3 {
 //    			"$打开交通广播",
 //    			"$我想听音乐广播"
     	};
-        NLPCore3 test = new NLPCore3();
+        NLPCore test = new NLPCore();
         try {
         	for (String str : words) {
         		String s = test.ReturnMessage(str);
         		System.out.println(s);
 			} 
         } catch (LoadModelException ex) {
-            Logger.getLogger(NLPCore3.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NLPCore.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public NLPCore3()
+    public NLPCore()
     {  
-    	
+    	dictPath = Config.getInstance().get("model_path", "C:/dict/");
     }
     
 	private void init() {
 		if (inited ){
 			return;
 		}
+		
 		inited = true;
 		noResultList = new ArrayList<String>();
-    	GetFileToList(noResultList,"C:\\dict\\noresult.txt");
+    	GetFileToList(noResultList,dictPath + "noresult.txt");
     	noResultIndex = (noResultIndex+1)%noResultList.size();
     	deviceType = new ArrayList<String>();
     	getSource = new GetSource();
@@ -119,22 +121,20 @@ public class NLPCore3 {
         ControlDelegate = control.getControlPort();
         this.mq = new messageQueue();
         try {   
-            factory = CNFactory.getInstance("C:\\dict\\models");
+            factory = CNFactory.getInstance(dictPath + "models");
         } catch (LoadModelException ex) {
-            Logger.getLogger(NLPCore3.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NLPCore.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        String curDir = "C:\\dict\\";                  
         try {
-            CNFactory.loadDict(curDir + "mydict2.txt");
-            CNFactory.loadDict(curDir + "genredict.txt");
-            CNFactory.loadDict(curDir + "verbdict2.txt");
-            CNFactory.loadDict(curDir + "lastdict2.txt");
-            CNFactory.loadDict(curDir + "devicedict2.txt");
+            CNFactory.loadDict(dictPath + "mydict2.txt");
+            CNFactory.loadDict(dictPath + "genredict.txt");
+            CNFactory.loadDict(dictPath + "verbdict2.txt");
+            CNFactory.loadDict(dictPath + "lastdict2.txt");
+            CNFactory.loadDict(dictPath + "devicedict2.txt");
             //CNFactory.loadDict(curDir + "mysongdict.txt");
         } catch (LoadModelException ex) {
-            Logger.getLogger(NLPCore3.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NLPCore.class.getName()).log(Level.SEVERE, null, ex);
         }
 	}
     public String ReturnMessage(String sentence) throws LoadModelException

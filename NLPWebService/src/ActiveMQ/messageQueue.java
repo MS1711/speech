@@ -2,6 +2,7 @@ package ActiveMQ;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.DeliveryMode;
@@ -10,8 +11,11 @@ import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+
+import properties.Config;
 
 public class messageQueue {
      ConnectionFactory connectionFactory;
@@ -32,7 +36,7 @@ public class messageQueue {
         connectionFactory = new ActiveMQConnectionFactory(
                 ActiveMQConnection.DEFAULT_USER,
                 ActiveMQConnection.DEFAULT_PASSWORD,
-                "tcp://localhost:61616");
+                Config.getInstance().get("mq_url", "tcp://localhost:61616"));
         try {
             connection = connectionFactory.createConnection();
             connection.start();

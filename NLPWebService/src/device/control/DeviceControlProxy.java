@@ -12,12 +12,14 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 
+import properties.Config;
+
 public class DeviceControlProxy {
 
 	public static int control(String deviceId, String action, String params) {
 		String status = "";
 		HttpClient client = HttpClients.createDefault();
-		String urlpattern = "http://localhost/device/control?deviceId=%1$s&action=%2$s&param=%3$s";
+		String urlpattern = Config.getInstance().get("device_control_url", "http://localhost") +"/device/control?deviceId=%1$s&action=%2$s&param=%3$s";
 		String url = String.format(urlpattern, new Object[]{deviceId, action, params});
 		HttpGet cmd = new HttpGet(url);
 		cmd.addHeader("Accept", "application/json");
@@ -44,7 +46,7 @@ public class DeviceControlProxy {
 	public static String queryDeviceStatus(String deviceId) {
 		String status = "";
 		HttpClient client = HttpClients.createDefault();
-		HttpGet cmd = new HttpGet("http://localhost/device/query?deviceId=" + deviceId);
+		HttpGet cmd = new HttpGet(Config.getInstance().get("device_control_url", "http://localhost") + "/device/query?deviceId=" + deviceId);
 		cmd.addHeader("Accept", "application/json");
 		try {
 			HttpResponse res = client.execute(cmd);

@@ -3,13 +3,15 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+import properties.Config;
+
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
-import com.mongodb.Mongo;
-import com.mongodb.MongoException;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.BasicDBObject;
+import com.mongodb.Mongo;
+import com.mongodb.MongoException;
 import com.mongodb.QueryOperators;
 import com.mongodb.util.JSON;
 public class DBConn {
@@ -33,21 +35,6 @@ public class DBConn {
 	}
 	
 
-	public static void main(String[] args)  {
-
-//		String tmpName="dana n. xu";
-//		String first=tmpName.substring(0, tmpName.indexOf(' '));
-//		String second=tmpName.substring(tmpName.indexOf(' ')+1,tmpName.length());
-//		System.out.println(first);
-//		System.out.println(second);
-//		ArrayList<String> list=new ArrayList<String>();
-//		list.add("Xiaohua  a");
-//		list.add("caia");
-//		list.add("hua");
-//		System.out.println(list.toString().contains("xiaohua"));
-		String t=new String("robert w. heath jr.");
-		System.out.println(t.contains("robert") && t.contains("w") && t.contains("heath"));
-	}
 	//add for auto_complete at 2014-5-9
 	public static DBCursor getCur(String collectName,String prefix,String getAttribute)
 	{
@@ -196,7 +183,7 @@ public class DBConn {
 	public DBConn(){ 
 		
 		try {
-			m = new Mongo("127.0.0.1",27017);
+			m = new Mongo(Config.getInstance().get("mongo_host", "127.0.0.1"), Integer.parseInt(Config.getInstance().get("mongo_port", "27017")));
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (MongoException e){
