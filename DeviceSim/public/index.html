@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/semantic.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/semantic.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>Smarthouse Demo</title>
+  </head>
+  
+  <body style="overflow:hidden">
+    <div class="ui  grid" >
+      <div class="column">
+        <div class="row" style="display:none">
+          <div class="ui buttons">
+            <div class="ui black basic button" onclick="lightAON()">LightA ON</div>
+            <div class="ui yellow basic button" onclick="lightAOFF()">LightA OFF</div>
+            <div class="ui green basic button" onclick="lightBON()">LightB ON</div>
+            <div class="ui blue basic button" onclick="lightBOFF()">LightB OFF</div>
+            <div class="ui orange basic button" onclick="curtainOPEN()">Curtain OPEN</div>
+            <div class="ui purple basic button" onclick="curtainCLOSE()">Cutain CLOSE</div>
+            <div class="ui pink basic button" onclick="TVON()">TV ON</div>
+            <div class="ui red basic button" onclick="TVOFF()">TV OFF</div>
+            <div class="ui teal basic button">Some more..</div>
+          </div>
+        </div>
+        <div class="clear"></div>
+        <img class="ui rounded image" id="mainpic" src="images/01HouseAutomation.jpg" alt=""/>
+        <img class="ui rounded image" id="lightA" src="images/02LivingRoomLightOn.png" alt=""/>
+        <img class="ui rounded image" id="lightB" src="images/03DiningRoomLightOn.png" alt=""/>
+        <img class="ui rounded image" id="curtain" src="images/04HouseCurtainOn.png" alt=""/>
+      <audio id="audioplayer" src="" autoplay="autoplay">Your browser is too weak to support audio...</audio>
+      <div class="videoframe" style="display:none">
+          <video  id="TV" src="media/1.mp4">Your browser is too weak to support video...</video>
+      </div>
+      <iframe src="" style="display:none;" id="radioframe"> </iframe>
+      <div id="hintmessage" class="ui icon compact positive message" style="display:;top:500px">
+        <i class="music icon"></i>
+        <div class="content">
+          <div class="header">
+            正在播放
+          </div>
+          <a id="nowplaying"></a>
+		  <div id="mediaDiv" style="display:none;">
+		  <object style="float: right;" id="MediaPlayer" width="192" height="216" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"
+            type="application/x-oleobject">
+            <param name="URL" value="">
+            <param name="SendPlayStateChangeEvents" value="True">
+            <param name="AutoStart" value="False">
+            <param name="uiMode" value="mini">
+            <param name="PlayCount" value="1">
+
+        </object>
+		  </div>
+		  
+		
+        </div>
+      </div>
+      <div id="airmessage" class="ui icon compact positive message bottomlay" style="display: none;">
+        <i class="music icon"></i>
+        <div class="content">
+          <div class="header">
+             报告主人
+          </div>
+          <p id="airinfo"></p>
+        </div>
+      </div>
+	  
+	  
+      <h6>powered by SPG</h6>
+  </div>
+</div>
+</body>
+</html>
+
+
+

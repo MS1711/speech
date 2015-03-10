@@ -1,0 +1,58 @@
+body{
+	font-family: "Microsoft Yahei";
+}
+
+h1{
+	text-align: center;
+}
+
+h6{
+	text-align: center;
+}
+code {
+background-color: rgba(0, 0, 0, 0.02);
+box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+display: inline-block;
+font-family: "Monaco","Menlo","Ubuntu Mono","Consolas","source-code-pro",monospace;
+font-size: 12px;
+font-weight: bold;
+margin: 0 2px 0px 0px;
+padding: 2px 4px;
+vertical-align: baseline;
+}
+
+.ui .image{
+	width:1600px;
+}
+
+#mainpic{
+	position: absolute;
+}
+#lightA, #curtain{
+	position: absolute;
+	z-index: 10;
+}
+#lightB{
+	position: absolute;
+	z-index:11;
+}
+
+.videoframe{
+	position: absolute;
+	top: 490px;
+	left:405px;
+
+	z-index:20;
+}
+#TV{
+	width: 26%;
+	height:15%;
+}
+
+.bottomlay{
+	position: absolute;
+	width: 500px !important; 
+	top:750px;
+	left:550px;
+	z-index: 21;
+}
