@@ -1,4 +1,4 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -66,7 +66,7 @@ public class NLPCore3 {
 //    			"$关闭客厅的灯",
 //    			"$打开空气净化器",
 //    			"$关闭空气净化器",
-//    			"$查询室内空气状况",
+//    			"$查询室内空气状况",  
 //    			
 //    			"$播放李荣浩的模特",
 //    			"$打开周杰伦的菊花台",
