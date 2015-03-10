@@ -1,0 +1,20 @@
+
+
+落地灯 LIGHT
+吸顶灯 LIGHT
+吊灯 LIGHT
+壁灯 LIGHT
+台灯 LIGHT
+夜灯 LIGHT
+床头灯 LIGHT
+柜式空调 AIR
+中央空调 AIR
+百叶窗 CURTAIN
+卷帘 CURTAIN
+竹帘 CURTAIN
+布帘 CURTAIN
+纱帘 CURTAIN
+灯 LIGHT
+空调 AIR
+窗帘 CURTAIN
+空气净化器 airpurifier

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://NLPServer/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="NLPWebService" targetNamespace="http://NLPServer/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/NLPWebService2/NLPWebService?xsd=1" namespace="http://NLPServer/" />
+    </xsd:schema>
+  </types>
+  <message name="hello">
+    <part name="parameters" element="tns:hello" />
+  </message>
+  <message name="helloResponse">
+    <part name="parameters" element="tns:helloResponse" />
+  </message>
+  <message name="DoNLP">
+    <part name="parameters" element="tns:DoNLP" />
+  </message>
+  <message name="DoNLPResponse">
+    <part name="parameters" element="tns:DoNLPResponse" />
+  </message>
+  <portType name="NLPWebService">
+    <operation name="hello">
+      <input wsam:Action="http://NLPServer/NLPWebService/helloRequest" message="tns:hello" />
+      <output wsam:Action="http://NLPServer/NLPWebService/helloResponse" message="tns:helloResponse" />
+    </operation>
+    <operation name="DoNLP">
+      <input wsam:Action="http://NLPServer/NLPWebService/DoNLPRequest" message="tns:DoNLP" />
+      <output wsam:Action="http://NLPServer/NLPWebService/DoNLPResponse" message="tns:DoNLPResponse" />
+    </operation>
+  </portType>
+  <binding name="NLPWebServicePortBinding" type="tns:NLPWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="hello">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DoNLP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="NLPWebService">
+    <port name="NLPWebServicePort" binding="tns:NLPWebServicePortBinding">
+      <soap:address location="http://localhost:8080/NLPWebService2/NLPWebService" />
+    </port>
+  </service>
+</definitions>

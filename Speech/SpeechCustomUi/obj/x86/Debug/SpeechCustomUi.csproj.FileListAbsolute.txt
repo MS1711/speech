@@ -1,0 +1,495 @@
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+D:\project\2014.12 speech synthesis\example - speech synthesis\Windows store app\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+D:\project\2014.12 speech synthesis\example - speech synthesis\myTest\Bing speech\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.xr.xml
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+E:\interview\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+E:\suning\version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+E:\suning\windowsapp speech version1\Bing speech\Bing Speech Recognition Control custom UI sample\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.xr.xml
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+F:\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+E:\suning\v2\VoiceScenario\SmartRouter\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+E:\suning\v3\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+E:\suning\v3\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+E:\suning\v4\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+E:\suning\v4\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\App.xbf
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\resources.pri
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\App.g.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\App.xaml
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\App.xbf
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt
+C:\workspace\C#\SpeechCustomUi\bin\x86\Debug\BasicPage1.xbf
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\BasicPage1.g.i.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\BasicPage1.g.cs
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\BasicPage1.xaml
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\BasicPage1.xbf
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+C:\workspace\C#\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\App.xbf
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\BasicPage1.xbf
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\Common\StandardStyles.xbf
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\MainPage.xbf
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.exe
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.pdb
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\resources.pri
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\AppxManifest.xml
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\SpeechCustomUi.build.appxrecipe
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\Bing.Speech.winmd
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx.dll
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\Microsoft.Bing.Platform.Logging.ClientWinRT.dll
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.Audio.winmd
+C:\workspace\Speech\SpeechCustomUi\bin\x86\Debug\Microsoft.Speech.VoiceService.MSSRAudio.winmd
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\App.g.i.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\App.g.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\BasicPage1.g.i.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\BasicPage1.g.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.i.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.g.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\MainPage.g.i.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\MainPage.g.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\XamlTypeInfo.g.cs
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\App.xaml
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\BasicPage1.xaml
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xaml
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\MainPage.xaml
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\App.xbf
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\BasicPage1.xbf
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\Common\StandardStyles.xbf
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\MainPage.xbf
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\XamlSaveStateFile.xml
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\Bing.Speech.Xaml.SpeechRecognizerUx\VoiceUIControl.xbf
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.exe
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.pdb
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\SpeechCustomUi.csproj.GenerateResource.Cache
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\priconfig.xml
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\priconfig.xml.intermediate
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\layout.resfiles
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\layout.resfiles.intermediate
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\resources.resfiles
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\resources.resfiles.intermediate
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\pri.resfiles
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\pri.resfiles.intermediate
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\qualifiers.txt
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\qualifiers.txt.intermediate
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\workspace\Speech\SpeechCustomUi\obj\x86\Debug\ProjectArchitectures.txt

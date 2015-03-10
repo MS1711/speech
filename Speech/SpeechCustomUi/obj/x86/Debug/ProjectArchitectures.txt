@@ -1,0 +1,1 @@
+C:\workspace\Speech\SpeechCustomUi\SpeechCustomUi.csproj;x86

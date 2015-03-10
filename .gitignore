@@ -1,0 +1,12 @@
+/MSQueueReceiver/bin
+/MSQueueReceiver/.settings
+/NLPWebService/.settings
+/NLPWebService/build
+/OnlineRobot/.settings
+/OnlineRobot/.apt_generated
+/Speech/CommonLib/obj
+/Speech/CommonLib/bin
+/Speech/DeviceWebService/bin
+/Speech/DeviceWebService/obj
+/Speech/SpeechCustomUi/bin
+/Speech/SpeechCustomUi/obj

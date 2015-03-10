@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://control.onlinerobot/" targetNamespace="http://control.onlinerobot/" version="1.0">
+
+  <xs:element name="GetBing" type="tns:GetBing"/>
+
+  <xs:element name="GetBingResponse" type="tns:GetBingResponse"/>
+
+  <xs:element name="GetSobot" type="tns:GetSobot"/>
+
+  <xs:element name="GetSobotResponse" type="tns:GetSobotResponse"/>
+
+  <xs:element name="GetTuLing" type="tns:GetTuLing"/>
+
+  <xs:element name="GetTuLingResponse" type="tns:GetTuLingResponse"/>
+
+  <xs:element name="main" type="tns:main"/>
+
+  <xs:element name="mainResponse" type="tns:mainResponse"/>
+
+  <xs:complexType name="GetBing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GetBingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="main">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mainResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="GetTuLing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GetTuLingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GetSobot">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GetSobotResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
