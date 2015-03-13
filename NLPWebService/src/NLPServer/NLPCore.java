@@ -116,9 +116,9 @@ public class NLPCore {
         getMusic = new SearchMusic();
         dbSearcher = new DBSearch();
         ctp = new ChineseToPinyin();
-        control = new ControlService();
+//        control = new ControlService();
        
-        ControlDelegate = control.getControlPort();
+//        ControlDelegate = control.getControlPort();
         this.mq = new messageQueue();
         try {   
             factory = CNFactory.getInstance(dictPath + "models");

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D4F5BE0-82DF-452E-97E1-38B0E88E352B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NLPCore</RootNamespace>
+    <AssemblyName>NLPCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractClassifier.cs" />
+    <Compile Include="AbstractHashCode.cs" />
+    <Compile Include="AbstractTagger.cs" />
+    <Compile Include="AbstractViterbi.cs" />
+    <Compile Include="AlphabetFactory.cs" />
+    <Compile Include="BaseTemplet.cs" />
+    <Compile Include="CharClassDictionary.cs" />
+    <Compile Include="CharClassTemplet.cs" />
+    <Compile Include="CharInStringTemplet.cs" />
+    <Compile Include="Chars.cs" />
+    <Compile Include="CNFactory.cs" />
+    <Compile Include="ConstraintViterbi.cs" />
+    <Compile Include="CWSTagger.cs" />
+    <Compile Include="DictLabel.cs" />
+    <Compile Include="DictPOSLabel.cs" />
+    <Compile Include="FormatCWS.cs" />
+    <Compile Include="HashFeatureAlphabet.cs" />
+    <Compile Include="HashSparseVector.cs" />
+    <Compile Include="IAlphabet.cs" />
+    <Compile Include="IFeatureAlphabet.cs" />
+    <Compile Include="ILabelAlphabet.cs" />
+    <Compile Include="Inferencer.cs" />
+    <Compile Include="Instance.cs" />
+    <Compile Include="InstanceSet.cs" />
+    <Compile Include="ISparseVector.cs" />
+    <Compile Include="LabelAlphabet.cs" />
+    <Compile Include="LabelParser.cs" />
+    <Compile Include="Linear.cs" />
+    <Compile Include="LinearViterbi.cs" />
+    <Compile Include="LoadModelException.cs" />
+    <Compile Include="MurmurHash.cs" />
+    <Compile Include="NLPDictionary.cs" />
+    <Compile Include="MultiValueMap.cs" />
+    <Compile Include="Pipe.cs" />
+    <Compile Include="POSTagger.cs" />
+    <Compile Include="Predict.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sentenizer.cs" />
+    <Compile Include="Sequence2FeatureSequence.cs" />
+    <Compile Include="SeriesPipes.cs" />
+    <Compile Include="String2Sequence.cs" />
+    <Compile Include="StringFeatureAlphabet.cs" />
+    <Compile Include="StringTypeTemplet.cs" />
+    <Compile Include="Templet.cs" />
+    <Compile Include="TempletGroup.cs" />
+    <Compile Include="TPredict.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

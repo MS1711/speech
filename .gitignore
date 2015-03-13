@@ -8,3 +8,8 @@
 /Speech/SpeechCustomUi/obj/*
 /OnlineRobot/WebContent/WEB-INF/classes/onlinerobot
 /OnlineRobot/WebContent/WEB-INF/classes/weibo4j
+/Speech/NLPCore/obj
+/Speech/NLPCore/bin
+/Speech/NLPTest/obj
+/Speech/NLPTest/bin
+/NLPWebService/*.log
