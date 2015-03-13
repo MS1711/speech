@@ -126,7 +126,7 @@ namespace NLPCore
             if (seg == null)
             {
                 //string file = path + segModel;
-                seg = new CWSTagger("");
+                seg = new CWSTagger(path);
                 seg.setEnFilter(isEnFilter);
             }
         }
@@ -135,7 +135,7 @@ namespace NLPCore
         {
             if (pos == null)
             {
-                pos = new POSTagger(seg, "");
+                pos = new POSTagger(seg, path);
             }
         }
 

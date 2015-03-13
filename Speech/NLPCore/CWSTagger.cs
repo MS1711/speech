@@ -86,31 +86,31 @@ namespace NLPCore
 
         public override void loadFrom(string modelfile)
         {
-            templets = LoadTempltes();
-            cl = LoadClassifier();
+            templets = LoadTempltes(modelfile);
+            cl = LoadClassifier(modelfile);
         }
 
-        private Linear LoadClassifier()
+        private Linear LoadClassifier(string path)
         {
             AlphabetFactory factory = AlphabetFactory.buildFactory();
             IFeatureAlphabet fab = factory.DefaultFeatureAlphabet();
             if (fab is StringFeatureAlphabet)
             {
-                (fab as StringFeatureAlphabet).LoadData(@"C:/Temp/stringFeature");
+                (fab as StringFeatureAlphabet).LoadData(path + "/stringFeature");
             }
             factory.DefaultLabelAlphabet().LoadData("");
 
             LinearViterbi lbi = new LinearViterbi(templets, 4);
             Linear c = new Linear(lbi, factory);
-            c.LoadData(@"C:/Temp/weights");
+            c.LoadData(path + "/weights");
 
             return c;
         }
 
-        private TempletGroup LoadTempltes()
+        private TempletGroup LoadTempltes(string path)
         {
             TempletGroup g = new TempletGroup();
-            g.load(@"C:\Temp\templets.txt");
+            g.load(path + "/templets");
             return g;
         }
 

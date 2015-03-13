@@ -21,7 +21,7 @@ namespace NLPTest
             ////Console.WriteLine(tag.tag(s));
             //POSTagger tag2 = new POSTagger(tag, "");
 
-            CNFactory f = CNFactory.GetInstance("");
+            CNFactory f = CNFactory.GetInstance(@"C:/Temp/");
             CNFactory.loadDict(@"C:\dict\mydict2.txt");
 
             foreach (var item in s)

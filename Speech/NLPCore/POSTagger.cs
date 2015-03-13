@@ -15,30 +15,30 @@ namespace NLPCore
 
         public override void loadFrom(string modelfile)
         {
-            templets = LoadTempltes();
-            cl = LoadClassifier();
+            templets = LoadTempltes(modelfile);
+            cl = LoadClassifier(modelfile);
         }
 
-        private Linear LoadClassifier()
+        private Linear LoadClassifier(string path)
         {
             AlphabetFactory factory = AlphabetFactory.buildFactory();
             IFeatureAlphabet fab = factory.DefaultFeatureAlphabet();
             if (fab is StringFeatureAlphabet)
             {
-                (fab as StringFeatureAlphabet).LoadData(@"C:/Temp/stringFeaturePOS");
+                (fab as StringFeatureAlphabet).LoadData(path + "/stringFeaturePOS");
             }
-            factory.DefaultLabelAlphabet().LoadDataPOS(@"C:/Temp/labelPOS.txt");
+            factory.DefaultLabelAlphabet().LoadDataPOS(path + "/labelPOS");
 
             LinearViterbi lbi = new LinearViterbi(templets, 41);
             Linear c = new Linear(lbi, factory);
-            c.LoadData(@"C:/Temp/weightsPOS");
+            c.LoadData(path + "/weightsPOS");
             return c;
         }
 
-        private TempletGroup LoadTempltes()
+        private TempletGroup LoadTempltes(string path)
         {
             TempletGroup g = new TempletGroup();
-            g.loadPos(@"C:\Temp\templetsPOS.txt");
+            g.loadPos(path + "/templetsPOS");
             return g;
         }
 

@@ -18,13 +18,15 @@ namespace NLPCore
 	     * 词之间间隔标记，缺省为空格。
 	     */
 	    protected String delim = " ";
+        protected string modelRoot = "";
 
 	    /**
 	     * 抽象标注器构造函数
 	     * @param file 模型文件
 	     * @throws LoadModelException
 	     */
-	    public AbstractTagger(String file) {
+	    public AbstractTagger(string file) {
+            modelRoot = file;
 		    loadFrom(file);
 		    if(getClassifier()==null){
 			    throw new LoadModelException("模型为空");
