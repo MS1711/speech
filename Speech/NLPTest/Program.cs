@@ -13,7 +13,7 @@ namespace NLPTest
         {
 
             string[] s = {
-                             "我想吃四川麻辣烫，oh,yeah",
+                             "我想吃四川麻辣烫",
                              "请把客厅的灯打开",
                              "这首歌真好听",
                          };
@@ -26,7 +26,10 @@ namespace NLPTest
 
             foreach (var item in s)
             {
+                DateTime start = DateTime.Now;
                 string ss = f.tag2String(item);
+                DateTime end = DateTime.Now;
+                Console.WriteLine(end.Ticks - start.Ticks);
                 Console.WriteLine(ss);
             }
             

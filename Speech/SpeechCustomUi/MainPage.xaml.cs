@@ -391,8 +391,8 @@ namespace SpeechCustomUi
                         if (h >= 0 && _result[h] == '-')
                         {
                             
-                            _result=_result.Remove(h,1);
                             _result.Insert(h, "零下");
+                            _result=_result.Remove(h,1);
                         }
                         
                     }
