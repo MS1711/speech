@@ -57,11 +57,11 @@ public class NLPCore {
 	
     public static void main(String[] args)  {
     	String[] words = new String[]{
-    			"$今天天气如何",
-    			"$北京明天天气如何",
-    			"$北京后天天气如何",
-    			"$北京3月7号天气如何",
-    			"$北京3月7号到3月10号天气如何",
+//    			"$今天天气如何",
+//    			"$北京明天天气如何",
+//    			"$北京后天天气如何",
+//    			"$北京3月7号天气如何",
+//    			"$北京3月7号到3月10号天气如何",
 //    			
 //    			"$打开客厅的灯",
 //    			"$关闭客厅的灯",
@@ -70,7 +70,7 @@ public class NLPCore {
 //    			"$查询室内空气状况",  
 //    			
 //    			"$播放李荣浩的模特",
-//    			"$打开周杰伦的菊花台",
+    			"$打开周杰伦的菊花台",
 //    			"$我想听周华健的歌",
 //    			"$播放摇滚音乐",
 //    			"$播放甜蜜蜜",
@@ -402,244 +402,242 @@ public class NLPCore {
         }
 		return null;
 	}
-	private String MusicDomain(Hashtable<String, String> myWords, String initWords) {
+
+	private String MusicDomain(Hashtable<String, String> myWords,
+ String initWords) {
 		String message = "";
 		String verb = myWords.get("媒体动词");
-                if(verb == null)
-                    verb = myWords.get("混合动词");
-        String genreVerb = myWords.get("音乐风格");
-        String verbCommand = dbSearcher.searchCommand2(verb);
-        if(verbCommand == null){
+		if (verb == null)
+			verb = myWords.get("混合动词");
+		String genreVerb = myWords.get("音乐风格");
+		String verbCommand = dbSearcher.searchCommand2(verb);
+		if (verbCommand == null) {
 			String noResult = noResultList.get(noResultIndex);
 			noResultIndex = (noResultIndex + 1) % noResultList.size();
 			System.out.println(noResult);
 			return noResult;
-        }
-		if(verbCommand.equals("stop")){//停止播放
-       	 message =  "STOP"+"$"+"X" + "$" + "X"+ "$" + "X";
-            mq.Sender(message);
-            System.out.println(message);
-            return "SUCCESS";
-       }                	
-      
-       if(genreVerb != null && verb!=null){//播放某种风格歌曲，如播放流行音乐   
-           //修改by v-feiche
-           String songName = initWords.substring(initWords.indexOf(genreVerb) + genreVerb.length());
-    	   String genreSearchResult = dbSearcher.SearchGenre(genreVerb, songName);
-    	   if (genreSearchResult.length() > 1) {
-    		   System.out.println(verbCommand.toUpperCase() + "$" + genreSearchResult);
-    		   mq.Sender(verbCommand.toUpperCase() + "$" + genreSearchResult);
-    		   return "SUCCESS";
-    	   }
-       }
-       if(verb != null)//媒体场景
-       {
-           String bin = null;
-           String noLastResult = "";
-           String noLastStoryResult = "";
-           String noLastRandomResult = "";
-           String noLastRadioResult = "";
-           String  noLastResultWithSinger = "";
-           String  resultWithSinger = "";
-           String randomMediaResult = "";
-           String afterOneTimeSearch = "";
-           String afterOneTimeSearch1 = "";
-           bin = initWords.substring(initWords.indexOf(verb) + verb.length());
-           System.out.println(bin);
-           if(bin.equals("故事") || bin.equals("童话")){
-               randomMediaResult = dbSearcher.RandomSearchOneWordWithCategory("story");
-               if(randomMediaResult.length()>1){
-               System.out.println(verbCommand.toUpperCase() + "$" + randomMediaResult);
-               mq.Sender(verbCommand.toUpperCase() + "$" + randomMediaResult);
-               return "SUCCESS";
-               }
-           }
-           if(bin.equals("广播") || bin.equals("电台") || bin.equals("调频")){
-               randomMediaResult = dbSearcher.RandomSearchOneWordWithCategory("radio");
-               if(randomMediaResult.length()>1){
-               System.out.println(verbCommand.toUpperCase() + "$" + randomMediaResult);
-               mq.Sender(verbCommand.toUpperCase() + "$" + randomMediaResult);
-               return "SUCCESS";
-               }
-           }
-           if(bin.equals("歌") || bin.equals("歌曲") || bin.equals("音乐")){
-              // randomMediaResult = RandomSearchOneWordWithCategory("music");
-               randomMediaResult = dbSearcher.RandomSearchMusicFromBaidu();
-               if(randomMediaResult.length()>1){
-               System.out.println(verbCommand.toUpperCase() + "$" + randomMediaResult);
-               mq.Sender(verbCommand.toUpperCase() + "$" + randomMediaResult);
-               return "SUCCESS";
-               }                       
-           }                   
-           //我想听白雪公主/浮夸/北京广播电台   
-           String searchTotalBinResult = dbSearcher.RandomSearchMusicFromBaidu(bin,"");
-           System.out.println(searchTotalBinResult);
-           if(searchTotalBinResult.length()>1){
-               System.out.println(verbCommand.toUpperCase() + "$" + searchTotalBinResult);
-               mq.Sender(verbCommand.toUpperCase() + "$" + searchTotalBinResult);
-               return "SUCCESS";
-           }
+		}
+		if (verbCommand.equals("stop")) {// 停止播放
+			message = "STOP" + "$" + "X" + "$" + "X" + "$" + "X";
+			mq.Sender(message);
+			System.out.println(message);
+			return "SUCCESS";
+		}
 
-           String last = null;
-           String storyLast = null;
-           String randomLast = null;
-           String radioLast = null;
-           //作者的字定语词
-           String deZiDingYu = null;
-           last = myWords.get("音乐后缀词");
-           storyLast = myWords.get("故事后缀词");
-           randomLast = myWords.get("随机后缀词");
-           radioLast = myWords.get("广播后缀词");
-           deZiDingYu = myWords.get("作者的字定语词");
-           if(!RealyLast(radioLast,initWords)){
-           	radioLast = null;
-           }
-           //处理音乐后缀词如播放十年这首歌
-           if(last != null && !last.equals("")){
-               String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(last));
-               System.out.println(noLast);
-               //noLastResult = SearchOneWord(noLast,"music");  
-               noLastResult = dbSearcher.RandomSearchMusicFromBaidu(noLast, "");
-           }
-           if(noLastResult.length()>1){
-               System.out.println(verbCommand.toUpperCase() + "$" + noLastResult);
-               mq.Sender(verbCommand.toUpperCase() + "$" + noLastResult);
-               return "SUCCESS";
-           }
-           //处理音乐后缀词如播放陈奕迅的十年这首歌
-           String afterVerbSinger1 = "";
-           String afterVerbSong1 = "";
-           if(last != null && !last.equals("")){
-               String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(last));
-               System.out.println(noLast);
-               String afterVerb = noLast;
-               if(deZiDingYu != null)
-                    afterVerb = afterVerb.replace(deZiDingYu, "的");
-               int deIndex = afterVerb.indexOf("的");
-               afterVerbSinger1 = afterVerb.substring(0, deIndex);
-               afterVerbSong1 = afterVerb.substring(deIndex + 1);
-               System.out.println( afterVerbSinger1 + "$" + afterVerbSong1);
-               //noLastResultWithSinger = SearchOneWordSingerAndName(afterVerbSinger,afterVerbSong); 
-               noLastResultWithSinger = dbSearcher.RandomSearchMusicFromBaidu(afterVerbSong1, afterVerbSinger1);
-               System.out.println(noLastResultWithSinger);
-               if(noLastResultWithSinger.length()>1){
-                   System.out.println(verbCommand.toUpperCase() + "$" + noLastResultWithSinger);
-                   mq.Sender(verbCommand.toUpperCase() + "$" + noLastResultWithSinger);
-                   return "SUCCESS";
-               }
-               else{//如果没有搜索到陈奕迅的十年，则任选一首十年播放                   
-                    afterOneTimeSearch = dbSearcher.RandomSearchMusicFromBaidu(afterVerbSong1,"");
-                    if(afterOneTimeSearch.length()>1){
-                        System.out.println(afterOneTimeSearch);
-                        mq.Sender(verbCommand.toUpperCase() + "$" + afterOneTimeSearch);
-                        String afterOneTimeSearchList [] = afterOneTimeSearch.split("\\$");                             
-                        if(afterOneTimeSearchList != null){
-                            if (afterOneTimeSearchList.length == 3){
-                           	 System.out.println("主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1 + ",我为您播放了" + afterOneTimeSearchList[2]);
-                           	 return "主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1 + ",我为您播放了" + afterOneTimeSearchList[2];
-                            }
-                            else{
-                           	 System.out.println("主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1 + ",我为您播放了另一首十年");
-                           	 return "主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1 + ",我为您播放了另一首十年";	                            	 
-                            }
-                        }                                                                
-                    }
-                    String singerValid = dbSearcher.RandomSearchMusicFromBaidu("",afterVerbSinger1);
-                    if(singerValid.length() >1){
-                    	System.out.println("主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1);
-                         return "主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1;	              
-                     }    
-               }
-           }                  
-          
-           //处理故事后缀词 如播放白雪公主这个故事
-           if(storyLast != null && !storyLast.equals("")){
-               String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(storyLast));
-               System.out.println(noLast);
-               noLastStoryResult = dbSearcher.SearchOneWord(noLast,"story");     
-           }  
-           if(noLastStoryResult.length()>1){
-               System.out.println(verbCommand.toUpperCase() + "$" + noLastStoryResult);
-               mq.Sender(verbCommand.toUpperCase() + "$" + noLastStoryResult );
-               return "SUCCESS";
-           }
-           //处理随机歌曲后缀词如播放周杰伦的歌
-           if(randomLast != null && !randomLast.equals("")){
-               String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(randomLast));
-               System.out.println(noLast);
-               //noLastRandomResult = RandomSearchOneWordWithSinger(noLast,"music","Metadata.Singer");
-               noLastRandomResult = dbSearcher.RandomSearchMusicFromBaidu("",noLast);
-                System.out.println( noLastRandomResult);
-           }  
-           if(noLastRandomResult.length()>1){
-               System.out.println( verbCommand.toUpperCase() + "$" + noLastRandomResult);
-               mq.Sender(verbCommand.toUpperCase() + "$" + noLastRandomResult);
-               return "SUCCESS";
-           }
-           //处理广播后缀词
-           if(radioLast != null && !radioLast.equals(""))
-           {
-               String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(radioLast));
-               noLastRadioResult = dbSearcher.SearchRadioCategory(noLast);
-               //noLastRadioResult =dbSearcher.SearchOneWord(noLast,"radio");
-               System.out.println( noLastRadioResult);
-           }
-           if(noLastRadioResult.length()>1)
-           {
-               System.out.println( verbCommand.toUpperCase() + "$" +  noLastRadioResult);
-               mq.Sender(verbCommand.toUpperCase() + "$" + noLastRadioResult);
-               return "SUCCESS";
-           }
-           //处理陈奕迅的十年这种情况
-           String afterVerbSinger2 = "";
-           String afterVerbSong2 = "";
-           String afterVerb = initWords.substring(initWords.indexOf(verb) + verb.length());
-           if(deZiDingYu != null)
-               afterVerb = afterVerb.replace(deZiDingYu, "的");
-           int deIndex = afterVerb.indexOf("的");
-           if(deIndex != -1){
-               afterVerbSinger2 = afterVerb.substring(0, deIndex);
-               afterVerbSong2 = afterVerb.substring(deIndex + 1);
-               System.out.println( afterVerbSinger2 + "：" + afterVerbSong2);
-               //resultWithSinger = SearchOneWordSingerAndName(afterVerbSinger,afterVerbSong);
-               resultWithSinger = dbSearcher.RandomSearchMusicFromBaidu(afterVerbSong2, afterVerbSinger2);
-           }
-           if(resultWithSinger.length()>1){
-               System.out.println( verbCommand.toUpperCase() + "$" +  resultWithSinger);
-               mq.Sender(verbCommand.toUpperCase() + "$" + resultWithSinger);
-               return "SUCCESS";
-           }
-           else{//如果没有搜索到陈奕迅的十年，则任选一首十年播放                   
-               afterOneTimeSearch1 = dbSearcher.RandomSearchMusicFromBaidu(afterVerbSong2,"");
-               if(afterOneTimeSearch1.length()>1){
-                   System.out.println(afterOneTimeSearch1);
-                   mq.Sender(verbCommand.toUpperCase() + "$" + afterOneTimeSearch1);
-                   String afterOneTimeSearchList [] = afterOneTimeSearch1.split("\\$");                           
-                   if(afterOneTimeSearchList != null){
-                        if (afterOneTimeSearchList.length == 3){
-                       	 System.out.println("主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2 + ",我为您播放了" + afterOneTimeSearchList[2]);
-                       	 return "主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2 + ",我为您播放了" + afterOneTimeSearchList[2];
-                        }
-                        else{
-                       	 System.out.println("主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2 + ",我为您播放了另一首十年");
-                       	 return "主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2 + ",我为您播放了另一首十年";	                            	 
-                        }
-                   } 
-                   
-               }
-               String singerValid = dbSearcher.RandomSearchMusicFromBaidu("",afterVerbSinger2);
-               if(singerValid.length() >1){
-               	System.out.println("主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2);
-                    return "主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2;	              
-                }                         		 
-           	else if(afterOneTimeSearch1.equals("$") || afterOneTimeSearch1.equals("")){ //随机选择一个返回语句
-               	String noResult = noResultList.get(noResultIndex);
-               	noResultIndex = (noResultIndex+1)%noResultList.size();
-               	System.out.println(noResult);
-                  return noResult;
-               }
-          }                                        
-       }
+		if (genreVerb != null && verb != null) {// 播放某种风格歌曲，如播放流行音乐
+			// 修改by v-feiche
+			String songName = initWords.substring(initWords.indexOf(genreVerb) + genreVerb.length());
+			String genreSearchResult = dbSearcher.SearchGenre(genreVerb, songName);
+			if (genreSearchResult.length() > 1) {
+				System.out.println(verbCommand.toUpperCase() + "$" + genreSearchResult);
+				mq.Sender(verbCommand.toUpperCase() + "$" + genreSearchResult);
+				return "SUCCESS";
+			}
+		}
+		if (verb != null)// 媒体场景
+		{
+			String bin = null;
+			String noLastResult = "";
+			String noLastStoryResult = "";
+			String noLastRandomResult = "";
+			String noLastRadioResult = "";
+			String noLastResultWithSinger = "";
+			String resultWithSinger = "";
+			String randomMediaResult = "";
+			String afterOneTimeSearch = "";
+			String afterOneTimeSearch1 = "";
+			bin = initWords.substring(initWords.indexOf(verb) + verb.length());
+			System.out.println(bin);
+			if (bin.equals("故事") || bin.equals("童话")) {
+				randomMediaResult = dbSearcher.RandomSearchOneWordWithCategory("story");
+				if (randomMediaResult.length() > 1) {
+					System.out.println(verbCommand.toUpperCase() + "$" + randomMediaResult);
+					mq.Sender(verbCommand.toUpperCase() + "$" + randomMediaResult);
+					return "SUCCESS";
+				}
+			}
+			if (bin.equals("广播") || bin.equals("电台") || bin.equals("调频")) {
+				randomMediaResult = dbSearcher.RandomSearchOneWordWithCategory("radio");
+				if (randomMediaResult.length() > 1) {
+					System.out.println(verbCommand.toUpperCase() + "$" + randomMediaResult);
+					mq.Sender(verbCommand.toUpperCase() + "$" + randomMediaResult);
+					return "SUCCESS";
+				}
+			}
+			if (bin.equals("歌") || bin.equals("歌曲") || bin.equals("音乐")) {
+				// randomMediaResult = RandomSearchOneWordWithCategory("music");
+				randomMediaResult = dbSearcher.RandomSearchMusicFromBaidu();
+				if (randomMediaResult.length() > 1) {
+					System.out.println(verbCommand.toUpperCase() + "$" + randomMediaResult);
+					mq.Sender(verbCommand.toUpperCase() + "$" + randomMediaResult);
+					return "SUCCESS";
+				}
+			}
+			// 我想听白雪公主/浮夸/北京广播电台
+			String searchTotalBinResult = dbSearcher.RandomSearchMusicFromBaidu(bin, "");
+			System.out.println(searchTotalBinResult);
+			if (searchTotalBinResult.length() > 1) {
+				System.out.println(verbCommand.toUpperCase() + "$" + searchTotalBinResult);
+				mq.Sender(verbCommand.toUpperCase() + "$" + searchTotalBinResult);
+				return "SUCCESS";
+			}
+
+			String last = null;
+			String storyLast = null;
+			String randomLast = null;
+			String radioLast = null;
+			// 作者的字定语词
+			String deZiDingYu = null;
+			last = myWords.get("音乐后缀词");
+			storyLast = myWords.get("故事后缀词");
+			randomLast = myWords.get("随机后缀词");
+			radioLast = myWords.get("广播后缀词");
+			deZiDingYu = myWords.get("作者的字定语词");
+			if (!RealyLast(radioLast, initWords)) {
+				radioLast = null;
+			}
+			// 处理音乐后缀词如播放十年这首歌
+			if (last != null && !last.equals("")) {
+				String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(last));
+				System.out.println(noLast);
+				// noLastResult = SearchOneWord(noLast,"music");
+				noLastResult = dbSearcher.RandomSearchMusicFromBaidu(noLast, "");
+			}
+			if (noLastResult.length() > 1) {
+				System.out.println(verbCommand.toUpperCase() + "$" + noLastResult);
+				mq.Sender(verbCommand.toUpperCase() + "$" + noLastResult);
+				return "SUCCESS";
+			}
+			// 处理音乐后缀词如播放陈奕迅的十年这首歌
+			String afterVerbSinger1 = "";
+			String afterVerbSong1 = "";
+			if (last != null && !last.equals("")) {
+				String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(last));
+				System.out.println(noLast);
+				String afterVerb = noLast;
+				if (deZiDingYu != null)
+					afterVerb = afterVerb.replace(deZiDingYu, "的");
+				int deIndex = afterVerb.indexOf("的");
+				afterVerbSinger1 = afterVerb.substring(0, deIndex);
+				afterVerbSong1 = afterVerb.substring(deIndex + 1);
+				System.out.println(afterVerbSinger1 + "$" + afterVerbSong1);
+				// noLastResultWithSinger =
+				// SearchOneWordSingerAndName(afterVerbSinger,afterVerbSong);
+				noLastResultWithSinger = dbSearcher.RandomSearchMusicFromBaidu(afterVerbSong1, afterVerbSinger1);
+				System.out.println(noLastResultWithSinger);
+				if (noLastResultWithSinger.length() > 1) {
+					System.out.println(verbCommand.toUpperCase() + "$" + noLastResultWithSinger);
+					mq.Sender(verbCommand.toUpperCase() + "$" + noLastResultWithSinger);
+					return "SUCCESS";
+				} else {// 如果没有搜索到陈奕迅的十年，则任选一首十年播放
+					afterOneTimeSearch = dbSearcher.RandomSearchMusicFromBaidu(afterVerbSong1, "");
+					if (afterOneTimeSearch.length() > 1) {
+						System.out.println(afterOneTimeSearch);
+						mq.Sender(verbCommand.toUpperCase() + "$" + afterOneTimeSearch);
+						String afterOneTimeSearchList[] = afterOneTimeSearch.split("\\$");
+						if (afterOneTimeSearchList != null) {
+							if (afterOneTimeSearchList.length == 3) {
+								System.out.println("主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1 + ",我为您播放了" + afterOneTimeSearchList[2]);
+								return "主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1 + ",我为您播放了" + afterOneTimeSearchList[2];
+							} else {
+								System.out.println("主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1 + ",我为您播放了另一首十年");
+								return "主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1 + ",我为您播放了另一首十年";
+							}
+						}
+					}
+					String singerValid = dbSearcher.RandomSearchMusicFromBaidu("", afterVerbSinger1);
+					if (singerValid.length() > 1) {
+						System.out.println("主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1);
+						return "主人，我没有帮您找到" + afterVerbSinger1 + "的" + afterVerbSong1;
+					}
+				}
+			}
+
+			// 处理故事后缀词 如播放白雪公主这个故事
+			if (storyLast != null && !storyLast.equals("")) {
+				String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(storyLast));
+				System.out.println(noLast);
+				noLastStoryResult = dbSearcher.SearchOneWord(noLast, "story");
+			}
+			if (noLastStoryResult.length() > 1) {
+				System.out.println(verbCommand.toUpperCase() + "$" + noLastStoryResult);
+				mq.Sender(verbCommand.toUpperCase() + "$" + noLastStoryResult);
+				return "SUCCESS";
+			}
+			// 处理随机歌曲后缀词如播放周杰伦的歌
+			if (randomLast != null && !randomLast.equals("")) {
+				String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(randomLast));
+				System.out.println(noLast);
+				// noLastRandomResult =
+				// RandomSearchOneWordWithSinger(noLast,"music","Metadata.Singer");
+				noLastRandomResult = dbSearcher.RandomSearchMusicFromBaidu("", noLast);
+				System.out.println(noLastRandomResult);
+			}
+			if (noLastRandomResult.length() > 1) {
+				System.out.println(verbCommand.toUpperCase() + "$" + noLastRandomResult);
+				mq.Sender(verbCommand.toUpperCase() + "$" + noLastRandomResult);
+				return "SUCCESS";
+			}
+			// 处理广播后缀词
+			if (radioLast != null && !radioLast.equals("")) {
+				String noLast = initWords.substring(initWords.indexOf(verb) + verb.length(), initWords.indexOf(radioLast));
+				noLastRadioResult = dbSearcher.SearchRadioCategory(noLast);
+				// noLastRadioResult =dbSearcher.SearchOneWord(noLast,"radio");
+				System.out.println(noLastRadioResult);
+			}
+			if (noLastRadioResult.length() > 1) {
+				System.out.println(verbCommand.toUpperCase() + "$" + noLastRadioResult);
+				mq.Sender(verbCommand.toUpperCase() + "$" + noLastRadioResult);
+				return "SUCCESS";
+			}
+			// 处理陈奕迅的十年这种情况
+			String afterVerbSinger2 = "";
+			String afterVerbSong2 = "";
+			String afterVerb = initWords.substring(initWords.indexOf(verb) + verb.length());
+			if (deZiDingYu != null)
+				afterVerb = afterVerb.replace(deZiDingYu, "的");
+			int deIndex = afterVerb.indexOf("的");
+			if (deIndex != -1) {
+				afterVerbSinger2 = afterVerb.substring(0, deIndex);
+				afterVerbSong2 = afterVerb.substring(deIndex + 1);
+				System.out.println(afterVerbSinger2 + "：" + afterVerbSong2);
+				// resultWithSinger =
+				// SearchOneWordSingerAndName(afterVerbSinger,afterVerbSong);
+				resultWithSinger = dbSearcher.RandomSearchMusicFromBaidu(afterVerbSong2, afterVerbSinger2);
+			}
+			if (resultWithSinger.length() > 1) {
+				System.out.println(verbCommand.toUpperCase() + "$" + resultWithSinger);
+				mq.Sender(verbCommand.toUpperCase() + "$" + resultWithSinger);
+				return "SUCCESS";
+			} else {// 如果没有搜索到陈奕迅的十年，则任选一首十年播放
+				afterOneTimeSearch1 = dbSearcher.RandomSearchMusicFromBaidu(afterVerbSong2, "");
+				if (afterOneTimeSearch1.length() > 1) {
+					System.out.println(afterOneTimeSearch1);
+					mq.Sender(verbCommand.toUpperCase() + "$" + afterOneTimeSearch1);
+					String afterOneTimeSearchList[] = afterOneTimeSearch1.split("\\$");
+					if (afterOneTimeSearchList != null) {
+						if (afterOneTimeSearchList.length == 3) {
+							System.out.println("主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2 + ",我为您播放了" + afterOneTimeSearchList[2]);
+							return "主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2 + ",我为您播放了" + afterOneTimeSearchList[2];
+						} else {
+							System.out.println("主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2 + ",我为您播放了另一首十年");
+							return "主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2 + ",我为您播放了另一首十年";
+						}
+					}
+
+				}
+				String singerValid = dbSearcher.RandomSearchMusicFromBaidu("", afterVerbSinger2);
+				if (singerValid.length() > 1) {
+					System.out.println("主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2);
+					return "主人，我没有帮您找到" + afterVerbSinger2 + "的" + afterVerbSong2;
+				} else if (afterOneTimeSearch1.equals("$") || afterOneTimeSearch1.equals("")) { // 随机选择一个返回语句
+					String noResult = noResultList.get(noResultIndex);
+					noResultIndex = (noResultIndex + 1) % noResultList.size();
+					System.out.println(noResult);
+					return noResult;
+				}
+			}
+		}
 		return null;
 	}
 

@@ -137,8 +137,12 @@ namespace NLPCore
             List<String[]> al = new List<String[]>();
             while (line != null)
             {
-                string[] s = Regex.Split(line, "\\s", RegexOptions.IgnoreCase);
-                al.Add(s);
+                if (line.Trim().Length != 0)
+                {
+                    string[] s = Regex.Split(line, "\\s", RegexOptions.IgnoreCase);
+                    al.Add(s);
+                }
+                
                 line = sr.ReadLine();
             }
             sr.Close();

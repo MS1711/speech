@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,8 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NL2ML\NL2ML.csproj">
+      <Project>{b1b8c232-0c13-46df-9e5c-736ec470c5fc}</Project>
+      <Name>NL2ML</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NLPCore\NLPCore.csproj">
       <Project>{6d4f5be0-82df-452e-97e1-38b0e88e352b}</Project>
       <Name>NLPCore</Name>
