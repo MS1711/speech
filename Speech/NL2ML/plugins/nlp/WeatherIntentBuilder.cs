@@ -25,6 +25,7 @@ namespace NL2ML.plugins.nlp
             {
                 logger.Debug("100% match location, weather suffix and search keyword");
                 Intent intent = new Intent();
+                intent.Domain = Domains.Weather;
                 intent.Score = 100;
                 intents.Add(intent);
                 return intents.ToArray();
@@ -37,7 +38,15 @@ namespace NL2ML.plugins.nlp
             {
                 logger.Debug("100% match location, weather suffix and question keyword");
                 Intent intent = new Intent();
+                intent.Domain = Domains.Weather;
                 intent.RawCommand = context.RawString;
+
+                WeatherData data = new WeatherData();
+                data.Location = POSUtils.GetWordByPOS(input, POSConstants.NounLocation);
+                data.Start = DateTime.Now;
+                data.End = DateTime.Now;
+                intent.Data = data;
+
                 intent.Score = 100;
                 intents.Add(intent);
                 return intents.ToArray();

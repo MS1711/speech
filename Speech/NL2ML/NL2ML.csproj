@@ -85,6 +85,7 @@
     <Compile Include="utils\MediaInfoHelper.cs" />
     <Compile Include="utils\POSUtils.cs" />
     <Compile Include="utils\Utils.cs" />
+    <Compile Include="utils\WeatherService.cs" />
     <Compile Include="utils\WMPProxy.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,7 @@ using NL2ML.dbhelper;
 using System.Runtime.InteropServices;
 using System;
 using NL2ML.consts;
+using NL2ML.utils;
 
 namespace NLPTest
 {
@@ -27,10 +28,15 @@ namespace NLPTest
             Console.Read();
         }
 
+        private static void Sample9()
+        {
+            string w = WeatherService.GetWeatherByCityName("北京", DateTime.Now);
+        }
+
         private static void Sample3()
         {
             NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
-            ins.Process("我想听菊花台");
+            ins.Process("北京天气如何");
         }
 
         private static void Sample7()

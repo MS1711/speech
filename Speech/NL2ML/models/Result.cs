@@ -9,5 +9,6 @@ namespace NL2ML.models
     public class Result
     {
         public bool IsOK { get; set; }
+        public string Msg { get; set; }
     }
 }
