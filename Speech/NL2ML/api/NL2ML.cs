@@ -35,7 +35,7 @@ namespace NL2ML.api
             modules.Add(new NLPModule(@"C:/Temp/", @"C:/Temp/mydict2.txt", @"C:/Temp/genredict.txt",
                                     @"C:/Temp/verbdict2.txt", @"C:/Temp/lastdict2.txt", @"C:/Temp/devicedict2.txt"));
 
-            MediaInfoCache.Instance.Load();
+            MediaItemInfoCache.Instance.Load(@"C:/Temp/artist", @"C:/Temp/songs");
             //modules.Add(new RegexModule());
         }
 

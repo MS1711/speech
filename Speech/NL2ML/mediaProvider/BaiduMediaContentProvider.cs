@@ -77,10 +77,5 @@ namespace NL2ML.mediaProvider
             }
             
         }
-
-        public MediaData GetMusicByGenre(string genre)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

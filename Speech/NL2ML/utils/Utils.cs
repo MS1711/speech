@@ -46,5 +46,16 @@ namespace NL2ML.utils
             int i = a < b ? a : b;
             return i = i < c ? i : c;
         }
+
+        public static string PrintList<T>(IList<T> list)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in list)
+            {
+                sb.Append(item.ToString() + " ");
+            }
+
+            return sb.ToString();
+        }
     }
 }

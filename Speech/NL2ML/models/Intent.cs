@@ -13,5 +13,10 @@ namespace NL2ML.models
         public object Data { get; set; }
         public int Score { get; set; }
         public string RawCommand { get; set; }
+
+        public override string ToString()
+        {
+            return "[" + Score + ", " + Domain + ", " + Action + ", " + Data + "]";
+        }
     }
 }

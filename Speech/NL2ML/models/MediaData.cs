@@ -14,5 +14,10 @@ namespace NL2ML.models
         public string Artist { get; set; }
         //high definition url
         public string Durl { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("[{0}, {1}, {2}]", Name, Artist, Genre);
+        }
     }
 }

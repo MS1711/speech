@@ -20,82 +20,579 @@ namespace NL2ML.plugins.nlp
         {
             string[][] input = context.Tags;
             List<Intent> intents = new List<Intent>();
-            //有媒体动词，很有可能是个播放/停止流媒体的请求
-            if (POSUtils.HasPOS(input, POSConstants.VerbMedia))
-            {
-                //检查是否有否定媒体动词：停止，停下来...
-                string[] allMediaVerb = POSUtils.GetWordsByPOS(input, POSConstants.VerbMedia);
-                //检查是否有否定副词存在: 不...
-                string[] negAdv = POSUtils.GetWordsByPOS(input, POSConstants.Adv);
-                //检查是否有否定词
-                bool hasNegtive = false;
-                foreach (var item in allMediaVerb)
-                {
-                    string command = DBHelperFactory.GetInstance().TranslateCommand(item);
-                    //有否定词，优先停止播放
-                    if (command.Equals("stop", StringComparison.OrdinalIgnoreCase))
-                    {
-                        hasNegtive = true;
-                    }
-                }
-
-                
-                if (hasNegtive)
-                {
-                    Intent intent = new Intent();
-                    intent.Action = Actions.Stop;
-                    intent.Domain = Domains.Media;
-                    intent.Score = 100;
-                    intents.Add(intent);
-                }
-
-                //检查是否有流派词：摇滚...
-                if (POSUtils.HasPOS(input, POSConstants.NounGenre))
-                {
-                    string[] words = POSUtils.GetWordsByPOS(input, POSConstants.NounGenre);
-                    MediaData data = MediaDataProviderFactory.GetProvider().GetMusicByGenre(words[0]);
-
-                    Intent intent = new Intent();
-                    intent.Action = Actions.Play;
-                    intent.Domain = Domains.Media;
-                    intent.Score = 100;
-                    intents.Add(intent);
-                }
-            }
-            else//没有媒体动词
-            {
-
-            }
 
             /*
-             * 尝试理解动词后面的内容, 先分大类：音乐，故事，广播，
-             * 1. 如果有关键词判断大分类，则在各个分类中进一步细化，如果没有则尝试按照
+             * try to understand if the words contains 'media' info.
+             * 1. if the words contains artist and a song name, it is probably a media request
+             * 2. if the words contains only artist without a concrete song name, randomly pick one
+             * 3. if the words has no artist name, try to understand if the words contains media related info. eg, genre, media suffix...
+             * 
              */
 
-
-            //找到媒体动词，歌手
-            if (POSUtils.HasPOS(input, POSConstants.VerbMedia) &&
-                POSUtils.HasPOS(input, POSConstants.NounName))
+            string action = GetAction(context);
+            logger.Debug("action: " + action);
+            if (action.Equals("stop", StringComparison.OrdinalIgnoreCase))
             {
-                //尝试找歌曲名称
-
-                logger.Debug("100% match artist, song name and media keyword");
                 Intent intent = new Intent();
+                intent.Action = Actions.Stop;
                 intent.Domain = Domains.Media;
-                intent.Action = Actions.Play;
-                intent.RawCommand = context.RawString;
                 intent.Score = 100;
-
-                MediaData mediaData = MediaDataProviderFactory.GetProvider().GetMusic("菊花台","周杰伦");
-                mediaData.Name = "";
-                mediaData.Genre = "";
-                intent.Data = mediaData;
-
                 intents.Add(intent);
-                return intents.ToArray();
+            }
+            else if (action.Equals("pause", StringComparison.OrdinalIgnoreCase))
+            {
+                Intent intent = new Intent();
+                intent.Action = Actions.Pause;
+                intent.Domain = Domains.Media;
+                intent.Score = 100;
+                intents.Add(intent);
+            }
+            else if (action.Equals("start", StringComparison.OrdinalIgnoreCase))
+            {
+                intents.AddRange(ProcessStart(context));
+            }
+            else if (action.Equals("resume", StringComparison.OrdinalIgnoreCase))
+            {
+                Intent intent = new Intent();
+                intent.Action = Actions.Resume;
+                intent.Domain = Domains.Media;
+                intent.Score = 100;
+                intents.Add(intent);
+            }
+            else if (action.Equals("switch", StringComparison.OrdinalIgnoreCase))
+            {
+                intents.AddRange(ProcessSwitch(context));
             }
 
             return intents.ToArray();
+        }
+
+        private List<Intent> ProcessStart(Context context)
+        {
+            List<Intent> intents = new List<Intent>();
+
+            string[][] tags = context.Tags;
+            string raw = context.RawString;
+
+            string[] genres = POSUtils.GetWordsByPOS(tags, POSConstants.NounGenre);
+            if (genres != null && genres.Length > 0)
+            {
+                string genre = genres[0];
+                string songName = raw.Substring(raw.IndexOf(genre) + genre.Length);
+                MediaData data = MediaInfoHelper.Instance.GetMusicByGenre(genre, songName);
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+
+            string[] verbs = POSUtils.GetWordsByPOS(tags, POSConstants.VerbMedia);
+            if (verbs == null || verbs.Length == 0)
+            {
+                verbs = POSUtils.GetWordsByPOS(tags, POSConstants.VerbMixed);
+            }
+            if (verbs == null || verbs.Length == 0)
+            {
+                return intents;
+            }
+            string verb = verbs[0];
+            string suffix = raw.Substring(raw.IndexOf(verb) + verb.Length);
+
+            if (suffix.Equals("故事") || suffix.Equals("童话"))
+            {
+                MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("story");
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+            if (suffix.Equals("广播") || suffix.Equals("电台") || suffix.Equals("调频"))
+            {
+                MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("radio");
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+            if (suffix.Equals("歌") || suffix.Equals("歌曲") || suffix.Equals("音乐"))
+            {
+                MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("music");
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+
+            MediaData data2 = MediaInfoHelper.Instance.GetMusicByName(suffix);
+            if (data2 != null)
+            {
+                Intent intent = new Intent();
+                intent.Action = Actions.Play;
+                intent.Domain = Domains.Media;
+                intent.Data = data2;
+                intent.Score = 90;
+                intents.Add(intent);
+
+                return intents;
+            }
+
+            string last = null;
+            string storyLast = null;
+            string randomLast = null;
+            string radioLast = null;
+            // 作者的字定语词
+            string deZiDingYu = null;
+            last = POSUtils.GetWordByPOS(tags, POSConstants.SuffixMusic);//myWords.get("音乐后缀词");
+            storyLast = POSUtils.GetWordByPOS(tags, POSConstants.SuffixStory); //myWords.get("故事后缀词");
+            randomLast = POSUtils.GetWordByPOS(tags, POSConstants.SuffixRandom); //myWords.get("随机后缀词");
+            radioLast = POSUtils.GetWordByPOS(tags, POSConstants.SuffixBroadcast); //myWords.get("广播后缀词");
+            deZiDingYu = POSUtils.GetWordByPOS(tags, POSConstants.AdvAuthor); //myWords.get("作者的字定语词");
+            if (!RealyLast(radioLast, raw))
+            {
+                radioLast = null;
+            }
+
+            if (!string.IsNullOrEmpty(last))
+            {
+                string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(last) - raw.IndexOf(verb) - verb.Length);
+                logger.Debug("no last: " + noLast);
+                data2 = MediaInfoHelper.Instance.GetMusicByName(noLast);
+                if (data2 != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data2;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+
+            // 处理音乐后缀词如播放陈奕迅的十年这首歌
+            string afterVerbSinger1 = "";
+            string afterVerbSong1 = "";
+            if (!string.IsNullOrEmpty(last))
+            {
+                string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(last) - raw.IndexOf(verb) - verb.Length);
+                String afterVerb = noLast;
+                if (deZiDingYu != null)
+                {
+                    afterVerb = afterVerb.Replace(deZiDingYu, "的");
+                }
+
+                int deIndex = afterVerb.IndexOf("的");
+                afterVerbSinger1 = afterVerb.Substring(0, deIndex);
+                afterVerbSong1 = afterVerb.Substring(deIndex + 1);
+
+                data2 = MediaInfoHelper.Instance.GetMusic(afterVerbSong1, afterVerbSinger1);
+                if (data2 != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data2;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+                else
+                {// 如果没有搜索到陈奕迅的十年，则任选一首十年播放
+                    data2 = MediaInfoHelper.Instance.GetMusic(afterVerbSong1, "");
+                    if (data2 != null)
+                    {
+                        Intent intent = new Intent();
+                        intent.Action = Actions.Play;
+                        intent.Domain = Domains.Media;
+                        intent.Data = data2;
+                        intent.Score = 90;
+                        intents.Add(intent);
+
+                        return intents;
+                    }
+                }
+            }
+
+            // 处理故事后缀词 如播放白雪公主这个故事
+            if (!string.IsNullOrEmpty(storyLast))
+            {
+                string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(storyLast) - raw.IndexOf(verb) - verb.Length);
+                data2 = MediaInfoHelper.Instance.GetMediaByCategory(noLast, "story");
+                if (data2 != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data2;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+            // 处理随机歌曲后缀词如播放周杰伦的歌
+            if (!string.IsNullOrEmpty(randomLast))
+            {
+                string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(randomLast) - raw.IndexOf(verb) - verb.Length);
+                data2 = MediaInfoHelper.Instance.GetRandomMediaByArtist(noLast);
+                if (data2 != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data2;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+            // 处理广播后缀词
+            if (!string.IsNullOrEmpty(radioLast))
+            {
+                string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(radioLast) - raw.IndexOf(verb) - verb.Length);
+                data2 = MediaInfoHelper.Instance.GetRandomRadioByCategory(noLast);
+                if (data2 != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data2;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+
+            // 处理陈奕迅的十年这种情况
+            string afterVerbSinger2 = "";
+            string afterVerbSong2 = "";
+            string afterVerb2 = raw.Substring(raw.IndexOf(verb) + verb.Length);
+            if (!string.IsNullOrEmpty(deZiDingYu))
+            {
+                afterVerb2 = afterVerb2.Replace(deZiDingYu, "的");
+            }
+
+            int deIndex2 = afterVerb2.IndexOf("的");
+            if (deIndex2 != -1)
+            {
+                afterVerbSinger2 = afterVerb2.Substring(0, deIndex2);
+                afterVerbSong2 = afterVerb2.Substring(deIndex2 + 1);
+
+                data2 = MediaInfoHelper.Instance.GetMusic(afterVerbSong2, afterVerbSinger2);
+
+            }
+            if (data2 != null)
+            {
+                Intent intent = new Intent();
+                intent.Action = Actions.Play;
+                intent.Domain = Domains.Media;
+                intent.Data = data2;
+                intent.Score = 90;
+                intents.Add(intent);
+
+                return intents;
+            }
+            else
+            {// 如果没有搜索到陈奕迅的十年，则任选一首十年播放
+                data2 = MediaInfoHelper.Instance.GetMusic(afterVerbSong2, "");
+                if (data2 != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data2;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+
+            return intents;
+        }
+
+        public bool RealyLast(string last, string initWords)
+        {
+            if (last != null)
+            {
+                int index = initWords.IndexOf(last);
+                if (initWords.Length == (index + last.Length))
+                    return true;
+                return false;
+            }
+            return false;
+        }
+
+        private string GetAction(Context context)
+        {
+            string[][] input = context.Tags;
+            string[] allMediaVerb = POSUtils.GetWordsByPOS(input, POSConstants.VerbMedia);
+            if (allMediaVerb == null || allMediaVerb.Length == 0)
+            {
+                allMediaVerb = POSUtils.GetWordsByPOS(input, POSConstants.VerbMixed);
+            }
+
+            if (allMediaVerb == null || allMediaVerb.Length == 0)
+            {
+                return "";
+            }
+            string item = allMediaVerb[0];
+            string command = DBHelperFactory.GetInstance().TranslateCommand(item);
+            return command;
+        }
+
+        private List<Intent> ProcessSwitch(Context context)
+        {
+            List<Intent> intents = new List<Intent>();
+            MediaData data = MediaInfoHelper.Instance.GetRandomMusic();
+            if (data != null)
+            {
+                Intent intent = new Intent();
+                intent.Action = Actions.Play;
+                intent.Domain = Domains.Media;
+                intent.Data = data;
+                intent.Score = 90;
+                intents.Add(intent);
+            }
+
+            return intents;
+        }
+
+        private List<Intent> ProcessStart2(Context context)
+        {
+            string[][] input = context.Tags;
+            List<Intent> intents = new List<Intent>();
+            List<string> rawArtistlist = SearchPersonNameList(context);
+            logger.Debug("find person name candidates: " + Utils.PrintList<string>(rawArtistlist));
+            List<string> rawSonglist = SearchSongNameList(context);
+            logger.Debug("find song candidates: " + Utils.PrintList<string>(rawSonglist));
+            List<string> rawGenrelist = SearchGenreList(context);
+            logger.Debug("find genre candidates: " + Utils.PrintList<string>(rawGenrelist));
+            //List<string> rawCategory = SearchCategory(context);
+
+            string artist = GetArtist(rawArtistlist);
+            logger.Debug("artist find: " + artist);
+            string songName = GetSongName(rawSonglist);
+            logger.Debug("song name find: " + songName);
+            string genre = GetGenre(rawGenrelist);
+            logger.Debug("genre find: " + genre);
+
+            if (!string.IsNullOrEmpty(artist) && !string.IsNullOrEmpty(songName))
+            {
+                MediaData data = MediaDataProviderFactory.GetProvider().GetMusic(artist, songName);
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 100;
+                    intents.Add(intent);
+                }
+                else
+                {
+                    data = MediaInfoHelper.Instance.GetMusicByName(songName);
+                    if (data != null)
+                    {
+                        Intent intent = new Intent();
+                        intent.Action = Actions.Play;
+                        intent.Domain = Domains.Media;
+                        intent.Data = data;
+                        intent.Score = 100;
+                        intents.Add(intent);
+                    }
+                }
+
+            }
+
+            if (!string.IsNullOrEmpty(artist) && !string.IsNullOrEmpty(genre))
+            {
+                string[] words = POSUtils.GetWordsByPOS(input, POSConstants.NounGenre);
+                MediaData data = MediaInfoHelper.Instance.GetMusicByArtistGenre(artist, words[0]);
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 90;
+                    intents.Add(intent);
+                }
+                else
+                {
+                    data = MediaInfoHelper.Instance.GetMusicByGenre(words[0]);
+                    if (data != null)
+                    {
+                        Intent intent = new Intent();
+                        intent.Action = Actions.Play;
+                        intent.Domain = Domains.Media;
+                        intent.Data = data;
+                        intent.Score = 70;
+                        intents.Add(intent);
+                    }
+                }
+            }
+
+            if (string.IsNullOrEmpty(artist) && !string.IsNullOrEmpty(songName))
+            {
+                MediaData data = MediaInfoHelper.Instance.GetMusicByName(songName);
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 80;
+                    intents.Add(intent);
+                }
+            }
+
+            if (string.IsNullOrEmpty(artist) && !string.IsNullOrEmpty(genre))
+            {
+                string[] words = POSUtils.GetWordsByPOS(input, POSConstants.NounGenre);
+                MediaData data = MediaInfoHelper.Instance.GetMusicByGenre(words[0]);
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 70;
+                    intents.Add(intent);
+                }
+            }
+
+            //has person name but not a documented artist, has a word which looks like a song name, try to find it online.
+            if (rawArtistlist.Count > 0 && string.IsNullOrEmpty(artist)
+                && rawSonglist.Count > 0 && string.IsNullOrEmpty(songName))
+            {
+                MediaData data = MediaDataProviderFactory.GetProvider().GetMusic(rawArtistlist[0], rawSonglist[0]);
+
+                if (data != null)
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 50;
+                    intents.Add(intent);
+                }
+
+            }
+
+            return intents;
+        }
+
+        private string GetGenre(List<string> rawGenrelist)
+        {
+            if (rawGenrelist.Count > 0)
+            {
+                return rawGenrelist[0];
+            }
+
+            return rawGenrelist[0];
+        }
+
+        private string GetSongName(List<string> rawSonglist)
+        {
+            if (rawSonglist.Count > 0)
+            {
+                return rawSonglist[0];
+            }
+
+            return "";
+        }
+
+        private string GetArtist(List<string> rawArtistlist)
+        {
+            if (rawArtistlist.Count > 0)
+            {
+                foreach (var item in rawArtistlist)
+                {
+                    string artist = MediaItemInfoCache.Instance.GetSimilarArtist(item);
+                    if (!string.IsNullOrEmpty(artist))
+                    {
+                        return artist;
+                    }
+                }
+            }
+
+            return "";
+        }
+
+        private List<string> SearchGenreList(Context context)
+        {
+            List<string> genres = new List<string>();
+            string[][] tags = context.Tags;
+            string[] genreList = POSUtils.GetWordsByPOS(tags, POSConstants.NounGenre);
+
+            genres.AddRange(genreList);
+            return genres;
+        }
+
+        private List<string> SearchSongNameList(Context context)
+        {
+            //find the content after the verb
+            string[][] tags = context.Tags;
+            int index = -1;
+            for (int i = 0; i < tags.Length; i++)
+            {
+                if (tags[i][1].Equals(POSConstants.VerbMedia, StringComparison.OrdinalIgnoreCase))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            //string content = context.RawString.Substring(context.RawString.IndexOf(tags[index][0]))
+            return new List<string>();
+        }
+
+        //find the raw person name in the context
+        private List<string> SearchPersonNameList(Context context)
+        {
+            List<string> names = new List<string>();
+            string[][] tags = context.Tags;
+            string[] nameList = POSUtils.GetWordsByPOS(tags, POSConstants.NounName);
+
+            if (nameList == null || nameList.Length == 0)
+            {
+
+            }
+            names.AddRange(nameList);
+            return names;
         }
     }
 }

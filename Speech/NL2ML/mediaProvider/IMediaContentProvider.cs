@@ -10,7 +10,5 @@ namespace NL2ML.mediaProvider
     interface IMediaContentProvider
     {
         MediaData GetMusic(string name, string artist);
-
-        MediaData GetMusicByGenre(string genre);
     }
 }

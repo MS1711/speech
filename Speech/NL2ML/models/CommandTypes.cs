@@ -21,6 +21,7 @@ namespace NL2ML.models
         Close,
         Play,
         Pause,
+        Resume,
         Stop,
         TurnUp,
         TurnDown,

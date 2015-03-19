@@ -52,9 +52,10 @@
     <Compile Include="api\NL2ML.cs" />
     <Compile Include="consts\MongoDBConstants.cs" />
     <Compile Include="consts\POSConstants.cs" />
+    <Compile Include="consts\WMPConstants.cs" />
     <Compile Include="dbhelper\DBHelperFactory.cs" />
     <Compile Include="dbhelper\IDBHelper.cs" />
-    <Compile Include="dbhelper\MediaInfoCache.cs" />
+    <Compile Include="dbhelper\MediaItemInfoCache.cs" />
     <Compile Include="dbhelper\MongoDBHelper.cs" />
     <Compile Include="handlers\IIntentHandler.cs" />
     <Compile Include="handlers\IntentManager.cs" />
@@ -81,9 +82,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tolerance\ITolerance.cs" />
     <Compile Include="tolerance\PronouceBasedTolerance.cs" />
-    <Compile Include="utils\MediaProvider.cs" />
+    <Compile Include="utils\MediaInfoHelper.cs" />
     <Compile Include="utils\POSUtils.cs" />
     <Compile Include="utils\Utils.cs" />
+    <Compile Include="utils\WMPProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NLPCore\NLPCore.csproj">

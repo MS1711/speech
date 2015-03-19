@@ -13,6 +13,18 @@ namespace NL2ML.dbhelper
 
         MediaData GetRandomMusicByGenre(string genre);
 
-        void LoadAllMediaInfo(ICollection<MediaData> set);
+        MediaData GetRandomMusicByGenre(string artist, string genre);
+
+        MediaData GetRandomMusic();
+
+        void LoadAllArtist(MediaItemInfoCache set);
+
+        void LoadAllSong(MediaItemInfoCache mediaItemInfoCache);
+
+        MediaData GetMediaByCategory(string name, string category);
+
+        MediaData GetRandomMusicByArtist(string name);
+
+        MediaData GetRandomRadioByCategory(string cate);
     }
 }

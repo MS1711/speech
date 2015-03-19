@@ -1,4 +1,6 @@
-﻿using NL2ML.models;
+﻿using log4net;
+using NL2ML.models;
+using NL2ML.utils;
 using NLPCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,7 @@ namespace NL2ML.plugins.nlp
 {
     public class NLPModule : INL2MLModule
     {
+        private static ILog logger = LogManager.GetLogger("common");
         private CNFactory factory;
         private List<IntentBuilder> builders = new List<IntentBuilder>();
 
@@ -44,6 +47,8 @@ namespace NL2ML.plugins.nlp
             intents.Sort((o1, o2) => {
                 return o2.Score - o1.Score;
             });
+
+            logger.Debug("Intents: " + Utils.PrintList<Intent>(intents));
 
             return intents.ToArray();
         }

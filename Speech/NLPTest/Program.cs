@@ -11,15 +11,36 @@ using System.Diagnostics;
 using NL2ML.mediaProvider;
 using NL2ML.models;
 using NL2ML.dbhelper;
+using System.Runtime.InteropServices;
+using System;
+using NL2ML.consts;
 
 namespace NLPTest
 {
     class Program
     {
+        private static ILog logger = LogManager.GetLogger("common");
+
         static void Main(string[] args)
         {
             Sample3();
             Console.Read();
+        }
+
+        private static void Sample3()
+        {
+            NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
+            ins.Process("我想听菊花台");
+        }
+
+        private static void Sample7()
+        {
+            MediaItemInfoCache c = MediaItemInfoCache.Instance;
+            c.Load(@"C:/Temp/artist", @"C:/Temp/songs");
+            Console.WriteLine(c.GetSimilarArtist("凤凰传奇的最炫民族风"));
+            logger.Debug("1");
+            Console.WriteLine(c.GetSimilarSong("凤凰传奇的歌"));
+            logger.Debug("2");
         }
 
         private static void Sample6()
@@ -46,11 +67,7 @@ namespace NLPTest
             } 
         }
 
-        private static void Sample3()
-        {
-            NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
-            ins.Process("我想听周杰伦的菊花台");
-        }
+        
 
         static void Sample2()
         {
@@ -64,7 +81,7 @@ namespace NLPTest
         static void Sample1()
         {
             string[] s = {
-                             "我想听北京交通广播台",
+                             "低点声",
                              "我不建议听周杰伦同学的菊花台",
                              "请把客厅的灯打开",
                              "这首歌真好听",
