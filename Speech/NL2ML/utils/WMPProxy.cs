@@ -1,4 +1,5 @@
-﻿using NL2ML.consts;
+﻿using log4net;
+using NL2ML.consts;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,6 +12,8 @@ namespace NL2ML.utils
 {
     public class WMPProxy
     {
+        private static ILog logger = LogManager.GetLogger("common");
+
         enum WMPStatus
         {
             Invalid,
@@ -43,8 +46,17 @@ namespace NL2ML.utils
 
         public void Play(string url)
         {
-            Stop();
-            Process.Start("wmplayer", "/play /close " + url);
+            try
+            {
+                Stop();
+                logger.Debug("playing: " + url);
+                Process.Start("wmplayer", "/play /close " + url);
+            }
+            catch (Exception e)
+            {
+                logger.Debug("start mplayer error: " + e.ToString());
+            }
+            
             status = WMPStatus.Playing;
         }
 
@@ -99,13 +111,20 @@ namespace NL2ML.utils
 
         public void Stop()
         {
-            Process[] ps = Process.GetProcessesByName("wmplayer");
-            if (ps != null)
+            try
             {
-                foreach (Process p in ps)
+                Process[] ps = Process.GetProcessesByName("wmplayer");
+                if (ps != null)
                 {
-                    p.Kill();
+                    foreach (Process p in ps)
+                    {
+                        p.Kill();
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+
             }
 
             status = WMPStatus.Idle;

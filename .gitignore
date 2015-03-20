@@ -15,3 +15,8 @@
 /NLPWebService/*.log
 /Speech/NL2ML/bin
 /Speech/NL2ML/obj
+/Speech/TestResults
+/Speech/NLPWebService/obj
+/Speech/NLPWebService/bin
+/Speech/NL2MLService/bin
+/Speech/NL2MLService/obj

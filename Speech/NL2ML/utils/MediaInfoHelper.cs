@@ -57,17 +57,6 @@ namespace NL2ML.utils
             return provider.GetMusic(songName, "");
         }
 
-        internal MediaData GetRandomMusic()
-        {
-            MediaData data = dbHelper.GetRandomMusic();
-            if (!string.IsNullOrEmpty(data.Name))
-            {
-                return provider.GetMusic(data.Name, data.Artist);
-            }
-
-            return null;
-        }
-
         internal MediaData GetMusicByGenre(string genre, string songName)
         {
             if (!string.IsNullOrEmpty(songName))
@@ -82,13 +71,13 @@ namespace NL2ML.utils
 
         internal MediaData GetRandomMediaByCategory(string category)
         {
-            MediaData data = dbHelper.GetRandomMusic();
-            if (!string.IsNullOrEmpty(data.Name))
+            MediaData data = dbHelper.GetRandomByCategory(category);
+            if (data != null && !string.IsNullOrEmpty(data.Name) && data.Category == MediaCategory.Music)
             {
-                return provider.GetMusic(data.Name, data.Artist);
+                return provider.GetMusic(data.Name, "");
             }
 
-            return null;
+            return data;
         }
 
         internal MediaData GetMediaByCategory(string name, string category)
@@ -110,6 +99,17 @@ namespace NL2ML.utils
         internal MediaData GetRandomRadioByCategory(string cate)
         {
             return dbHelper.GetRandomRadioByCategory(cate);
+        }
+
+        internal MediaData GetMediaByName(string suffix)
+        {
+            MediaData data = dbHelper.GetMediaByName(suffix);
+            if (data == null || data.Category == MediaCategory.Music)
+            {
+                data = provider.GetMusic(suffix, "");
+            }
+            
+            return data;
         }
     }
 }

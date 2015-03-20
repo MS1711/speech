@@ -80,7 +80,7 @@ namespace NL2ML.plugins.nlp
                 string genre = genres[0];
                 string songName = raw.Substring(raw.IndexOf(genre) + genre.Length);
                 MediaData data = MediaInfoHelper.Instance.GetMusicByGenre(genre, songName);
-                if (data != null)
+                if (data != null && data.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -108,7 +108,7 @@ namespace NL2ML.plugins.nlp
             if (suffix.Equals("故事") || suffix.Equals("童话"))
             {
                 MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("story");
-                if (data != null)
+                if (data != null && data.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -123,7 +123,7 @@ namespace NL2ML.plugins.nlp
             if (suffix.Equals("广播") || suffix.Equals("电台") || suffix.Equals("调频"))
             {
                 MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("radio");
-                if (data != null)
+                if (data != null && data.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -138,7 +138,7 @@ namespace NL2ML.plugins.nlp
             if (suffix.Equals("歌") || suffix.Equals("歌曲") || suffix.Equals("音乐"))
             {
                 MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("music");
-                if (data != null)
+                if (data != null && data.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -151,8 +151,8 @@ namespace NL2ML.plugins.nlp
                 }
             }
 
-            MediaData data2 = MediaInfoHelper.Instance.GetMusicByName(suffix);
-            if (data2 != null)
+            MediaData data2 = MediaInfoHelper.Instance.GetMediaByName(suffix);
+            if (data2 != null && data2.IsValid())
             {
                 Intent intent = new Intent();
                 intent.Action = Actions.Play;
@@ -185,7 +185,7 @@ namespace NL2ML.plugins.nlp
                 string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(last) - raw.IndexOf(verb) - verb.Length);
                 logger.Debug("no last: " + noLast);
                 data2 = MediaInfoHelper.Instance.GetMusicByName(noLast);
-                if (data2 != null)
+                if (data2 != null && data2.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -205,7 +205,7 @@ namespace NL2ML.plugins.nlp
             {
                 string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(last) - raw.IndexOf(verb) - verb.Length);
                 String afterVerb = noLast;
-                if (deZiDingYu != null)
+                if (!string.IsNullOrEmpty(deZiDingYu))
                 {
                     afterVerb = afterVerb.Replace(deZiDingYu, "的");
                 }
@@ -215,7 +215,7 @@ namespace NL2ML.plugins.nlp
                 afterVerbSong1 = afterVerb.Substring(deIndex + 1);
 
                 data2 = MediaInfoHelper.Instance.GetMusic(afterVerbSong1, afterVerbSinger1);
-                if (data2 != null)
+                if (data2 != null && data2.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -229,7 +229,7 @@ namespace NL2ML.plugins.nlp
                 else
                 {// 如果没有搜索到陈奕迅的十年，则任选一首十年播放
                     data2 = MediaInfoHelper.Instance.GetMusic(afterVerbSong1, "");
-                    if (data2 != null)
+                    if (data2 != null && data2.IsValid())
                     {
                         Intent intent = new Intent();
                         intent.Action = Actions.Play;
@@ -248,7 +248,7 @@ namespace NL2ML.plugins.nlp
             {
                 string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(storyLast) - raw.IndexOf(verb) - verb.Length);
                 data2 = MediaInfoHelper.Instance.GetMediaByCategory(noLast, "story");
-                if (data2 != null)
+                if (data2 != null && data2.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -265,7 +265,7 @@ namespace NL2ML.plugins.nlp
             {
                 string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(randomLast) - raw.IndexOf(verb) - verb.Length);
                 data2 = MediaInfoHelper.Instance.GetRandomMediaByArtist(noLast);
-                if (data2 != null)
+                if (data2 != null && data2.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -282,7 +282,7 @@ namespace NL2ML.plugins.nlp
             {
                 string noLast = raw.Substring(raw.IndexOf(verb) + verb.Length, raw.IndexOf(radioLast) - raw.IndexOf(verb) - verb.Length);
                 data2 = MediaInfoHelper.Instance.GetRandomRadioByCategory(noLast);
-                if (data2 != null)
+                if (data2 != null && data2.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -313,7 +313,7 @@ namespace NL2ML.plugins.nlp
                 data2 = MediaInfoHelper.Instance.GetMusic(afterVerbSong2, afterVerbSinger2);
 
             }
-            if (data2 != null)
+            if (data2 != null && data2.IsValid())
             {
                 Intent intent = new Intent();
                 intent.Action = Actions.Play;
@@ -327,7 +327,7 @@ namespace NL2ML.plugins.nlp
             else
             {// 如果没有搜索到陈奕迅的十年，则任选一首十年播放
                 data2 = MediaInfoHelper.Instance.GetMusic(afterVerbSong2, "");
-                if (data2 != null)
+                if (data2 != null && data2.IsValid())
                 {
                     Intent intent = new Intent();
                     intent.Action = Actions.Play;
@@ -376,7 +376,7 @@ namespace NL2ML.plugins.nlp
         private List<Intent> ProcessSwitch(Context context)
         {
             List<Intent> intents = new List<Intent>();
-            MediaData data = MediaInfoHelper.Instance.GetRandomMusic();
+            MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("music");
             if (data != null)
             {
                 Intent intent = new Intent();

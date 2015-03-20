@@ -8,7 +8,7 @@ namespace NL2ML.dbhelper
 {
     class DBHelperFactory
     {
-        private static IDBHelper helper = new MongoDBHelper();
+        private static IDBHelper helper = new WebDataHelper();
 
         public static IDBHelper GetInstance()
         {

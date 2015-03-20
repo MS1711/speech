@@ -25,6 +25,7 @@ namespace NL2ML.handlers
                 DateTime end = data.End;
 
                 res.Msg = WeatherService.GetWeatherByCityName(loc, start, end);
+                res.IsOK = true;
                 logger.Debug("weather data: " + res.Msg);
             }
 

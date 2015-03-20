@@ -29,8 +29,6 @@ using System.Globalization;
 namespace SpeechCustomUi
 {
 
-
-
     public sealed partial class MainPage : Page
     {
         

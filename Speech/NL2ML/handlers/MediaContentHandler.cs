@@ -30,8 +30,18 @@ namespace NL2ML.handlers
             if (intent.Action == Actions.Play)
             {
                 MediaData data = intent.Data as MediaData;
-                proxy.Play(data.Durl);
-                logger.Debug("start playing: " + data.Durl);
+                string url = data.Durl;
+                if (string.IsNullOrEmpty(url))
+                {
+                    url = data.Url;
+                }
+
+                if (string.IsNullOrEmpty(url))
+                {
+                    return res;
+                }
+                proxy.Play(url);
+                logger.Debug("start playing: " + url);
                 
                 res.IsOK = true;
             }

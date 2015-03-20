@@ -39,6 +39,10 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -56,7 +60,7 @@
     <Compile Include="dbhelper\DBHelperFactory.cs" />
     <Compile Include="dbhelper\IDBHelper.cs" />
     <Compile Include="dbhelper\MediaItemInfoCache.cs" />
-    <Compile Include="dbhelper\MongoDBHelper.cs" />
+    <Compile Include="dbhelper\WebDataHelper.cs" />
     <Compile Include="handlers\IIntentHandler.cs" />
     <Compile Include="handlers\IntentManager.cs" />
     <Compile Include="handlers\MediaContentHandler.cs" />
@@ -95,9 +99,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="NL2ML.dll.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +112,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

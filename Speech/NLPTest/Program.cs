@@ -28,6 +28,13 @@ namespace NLPTest
             Console.Read();
         }
 
+        private static void Sample10()
+        {
+            WebDataHelper h = new WebDataHelper();
+            MediaData s = h.GetRandomMusicByGenre("摇滚");
+            logger.Debug(s);
+        }
+
         private static void Sample9()
         {
             string w = WeatherService.GetWeatherByCityName("北京", DateTime.Now);
@@ -36,7 +43,7 @@ namespace NLPTest
         private static void Sample3()
         {
             NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
-            ins.Process("北京天气如何");
+            ins.Process("我想听阿拉丁神灯这个故事");
         }
 
         private static void Sample7()
@@ -47,12 +54,6 @@ namespace NLPTest
             logger.Debug("1");
             Console.WriteLine(c.GetSimilarSong("凤凰传奇的歌"));
             logger.Debug("2");
-        }
-
-        private static void Sample6()
-        {
-            MongoDBHelper h = new MongoDBHelper();
-            Console.WriteLine(h.TranslateCommand("打开"));
         }
 
         private static void Sample5()
