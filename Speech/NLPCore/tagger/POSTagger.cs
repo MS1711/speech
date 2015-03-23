@@ -38,7 +38,7 @@ namespace NLPCore
         private TempletGroup LoadTempltes(string path)
         {
             TempletGroup g = new TempletGroup();
-            g.loadPos(path + "/templetsPOS");
+            g.loadPos(path + "/templetsPOS", path + "/charclassxingdict");
             return g;
         }
 

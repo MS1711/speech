@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NL2ML.utils
 {
-    public class WMPProxy
+    public class WMPProxy : IPlayer
     {
         private static ILog logger = LogManager.GetLogger("common");
 
@@ -44,7 +44,7 @@ namespace NL2ML.utils
 
         }
 
-        public void Play(string url)
+        public int Play(string url)
         {
             try
             {
@@ -58,28 +58,33 @@ namespace NL2ML.utils
             }
             
             status = WMPStatus.Playing;
+
+            return 0;
         }
 
-        public void Resume()
+        public int Resume()
         {
             if (status == WMPStatus.Playing)
             {
-                return;
+                return 0;
             }
 
             SendCommand(WMPConstants.APPCOMMAND_MEDIA_PLAY_PAUSE);
             status = WMPStatus.Playing;
+
+            return 0;
         }
 
-        public void Pause()
+        public int Pause()
         {
             if (status == WMPStatus.Pausing)
             {
-                return;
+                return 0;
             }
 
             SendCommand(WMPConstants.APPCOMMAND_MEDIA_PLAY_PAUSE);
             status = WMPStatus.Pausing;
+            return 0;
         }
 
         private int SendCommand(int pCommand)
@@ -94,9 +99,9 @@ namespace NL2ML.utils
             return -1;
         }
 
-        public void VolumeUp()
+        public int SetVolume(int volume)
         {
-
+            return 0;
         }
 
         public void VolumeDown()
@@ -104,12 +109,12 @@ namespace NL2ML.utils
 
         }
 
-        public void Mute()
+        public int Mute()
         {
-
+            return 0;
         }
 
-        public void Stop()
+        public int Stop()
         {
             try
             {
@@ -128,12 +133,12 @@ namespace NL2ML.utils
             }
 
             status = WMPStatus.Idle;
+            return 0;
         }
 
         internal static WMPProxy Instance
         {
             get { return WMPProxy.instance; }
         }
-
     }
 }

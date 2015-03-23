@@ -32,8 +32,8 @@ namespace NL2ML.api
         private void LoadModules()
         {
             logger.Debug("load nlp module");
-            modules.Add(new NLPModule(@"C:/Temp/", @"C:/Temp/mydict2.txt", @"C:/Temp/genredict.txt",
-                                    @"C:/Temp/verbdict2.txt", @"C:/Temp/lastdict2.txt", @"C:/Temp/devicedict2.txt"));
+            modules.Add(new NLPModule(@"C:/workspace/nlpdictdata/", @"C:/workspace/nlpdictdata/mydict2.txt", @"C:/workspace/nlpdictdata/genredict.txt",
+                                    @"C:/workspace/nlpdictdata/verbdict2.txt", @"C:/workspace/nlpdictdata/lastdict2.txt", @"C:/workspace/nlpdictdata/devicedict2.txt"));
 
         }
 

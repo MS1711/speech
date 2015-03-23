@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.QuartzTypeLib">
+      <HintPath>..\..\..\..\Users\tiantiaw\Downloads\DirectShowSource\bin\Debug\Interop.QuartzTypeLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -59,7 +63,6 @@
     <Compile Include="consts\WMPConstants.cs" />
     <Compile Include="dbhelper\DBHelperFactory.cs" />
     <Compile Include="dbhelper\IDBHelper.cs" />
-    <Compile Include="dbhelper\MediaItemInfoCache.cs" />
     <Compile Include="dbhelper\WebDataHelper.cs" />
     <Compile Include="handlers\IIntentHandler.cs" />
     <Compile Include="handlers\IntentManager.cs" />
@@ -86,6 +89,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tolerance\ITolerance.cs" />
     <Compile Include="tolerance\PronouceBasedTolerance.cs" />
+    <Compile Include="utils\DShowPlayer.cs" />
+    <Compile Include="utils\IPlayer.cs" />
     <Compile Include="utils\MediaInfoHelper.cs" />
     <Compile Include="utils\POSUtils.cs" />
     <Compile Include="utils\Utils.cs" />

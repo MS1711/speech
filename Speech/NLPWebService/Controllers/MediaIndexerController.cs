@@ -105,16 +105,18 @@ namespace NLPWebService.Controllers
 
         [Route("correctartist")]
         [HttpGet]
-        public string GetCorrectedArtist(string artist)
+        public CorrectedInfo GetCorrectedArtist(string artist)
         {
-            return "";
+            CorrectedInfo info = mediaBase.GetSimilarArtist(artist);
+            return info;
         }
 
         [Route("correctsong")]
         [HttpGet]
-        public string GetCorrectedSong(string song)
+        public CorrectedInfo GetCorrectedSong(string song)
         {
-            return "";
+            CorrectedInfo info = mediaBase.GetSimilarSong(song);
+            return info;
         }
     }
 }

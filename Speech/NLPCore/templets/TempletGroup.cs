@@ -70,7 +70,7 @@ namespace NLPCore
             orders[0] = 1;
         }
 
-        public void loadPos(String file)
+        public void loadPos(string file, string lastName)
         {
             StreamReader sr = new StreamReader(file, Encoding.UTF8);
             string str = sr.ReadLine();
@@ -95,7 +95,7 @@ namespace NLPCore
 
             List<CharClassDictionary> dicts = new List<CharClassDictionary>();
             CharClassDictionary dic = new CharClassDictionary();
-            dic.LoadData(@"C:/Temp/charclassxingdict", "姓");
+            dic.LoadData(lastName, "姓");
             dicts.Add(dic);
             Add(new CharClassTemplet(gid++, dicts.ToArray()));
 

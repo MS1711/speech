@@ -14,7 +14,7 @@ namespace NL2ML.handlers
     public class MediaContentHandler : IIntentHandler
     {
         private static ILog logger = LogManager.GetLogger("common");
-        private WMPProxy proxy = WMPProxy.Instance;
+        private IPlayer proxy = new DShowPlayer();
 
         public Result handle(Intent intent)
         {
@@ -40,6 +40,13 @@ namespace NL2ML.handlers
                 {
                     return res;
                 }
+
+                //special logic for tom61. Because the real mp3 url is nested in the response html.
+                if (url.IndexOf("tom61.com") != -1)
+                {
+                    url = Utils.GetTom61InnerAudioLink(url);
+                }
+
                 proxy.Play(url);
                 logger.Debug("start playing: " + url);
                 

@@ -20,6 +20,8 @@ namespace NL2ML.consts
         public const string SuffixTime = "时间模糊短语";
         public const string SuffixQuestion = "询问词";
         public const string NounGenre = "音乐风格";
+        public const string NounTime = "时间短语";
+        public const string NounTimeSpan = "时间模糊短语";
 
         public const string NounLocation = "地名";
         public const string NounName = "人名";

@@ -35,4 +35,13 @@ namespace NL2ML.models
             return string.Format("[{0}, {1}, {2}]", Name, Artist, Genre);
         }
     }
+
+    public class CorrectedInfo
+    {
+        public float Score { get; set; }
+        public string Item { get; set; }
+        public string Artist { get; set; }
+        public string SongName { get; set; }
+        public MediaCategory Category { get; set; }
+    }
 }

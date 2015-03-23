@@ -111,5 +111,15 @@ namespace NL2ML.utils
             
             return data;
         }
+
+        internal CorrectedInfo GetSimilarSong(string suffix)
+        {
+            return dbHelper.GetCorrectedSong(suffix);
+        }
+
+        internal CorrectedInfo GetSimilarArtist(string suffix)
+        {
+            return dbHelper.GetCorrectedArtist(suffix);
+        }
     }
 }

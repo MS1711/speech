@@ -19,34 +19,35 @@ namespace NLPWebService.Models
 
         private MediaItemInfoCache()
         {
-            Load(ConfigurationManager.AppSettings["songCachePath"], ConfigurationManager.AppSettings["artistCachePath"]);
+            Load(ConfigurationManager.AppSettings["artistCachePath"], ConfigurationManager.AppSettings["songCachePath"]);
         }
 
-        public string GetSimilarArtist(string name)
+        public CorrectedInfo GetSimilarArtist(string name)
         {
             return GetSimilar(artistList, name);
         }
 
-        public string GetSimilar(SortedSet<string> set, string name)
+        public CorrectedInfo GetSimilar(SortedSet<string> set, string name)
         {
-            float max = 0;
-            string data = null;
+            CorrectedInfo info = new CorrectedInfo();
+            char first = name[0];
             foreach (var item in set)
             {
                 string n = item;
                 float v = Utilities.Leven(n, name);
-                if (v > max)
+                if (v > info.Score)
                 {
-                    max = v;
-                    data = item;
+                    info.Score = v;
+                    info.Item = item;
                 }
             }
 
-            logger.Debug("similarest: " + data + ", score: " + max);
-            return data;
+            
+            logger.Debug("similarest: " + info.Item + ", score: " + info.Score);
+            return info;
         }
 
-        public string GetSimilarSong(string name)
+        public CorrectedInfo GetSimilarSong(string name)
         {
             return GetSimilar(songList, name);
         }

@@ -70,6 +70,7 @@ namespace NL2ML.plugins.nlp
         private List<Intent> ProcessStart(Context context)
         {
             List<Intent> intents = new List<Intent>();
+            List<CorrectedInfo> perhapsList = new List<CorrectedInfo>();
 
             string[][] tags = context.Tags;
             string raw = context.RawString;
@@ -104,6 +105,23 @@ namespace NL2ML.plugins.nlp
             }
             string verb = verbs[0];
             string suffix = raw.Substring(raw.IndexOf(verb) + verb.Length);
+
+            //处理：随便来一个这种没有宾语后缀的
+            if (string.IsNullOrEmpty(suffix) && POSUtils.HasPOS(tags, POSConstants.SuffixRandom))
+            {
+                MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("music");
+                if (data != null && data.IsValid())
+                {
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
 
             if (suffix.Equals("故事") || suffix.Equals("童话"))
             {
@@ -163,6 +181,12 @@ namespace NL2ML.plugins.nlp
 
                 return intents;
             }
+
+            CorrectedInfo songCorrected = MediaInfoHelper.Instance.GetSimilarSong(suffix);
+            songCorrected.Category = MediaCategory.Music;
+            songCorrected.SongName = songCorrected.Item;
+            perhapsList.Add(songCorrected);
+
 
             string last = null;
             string storyLast = null;
@@ -240,6 +264,13 @@ namespace NL2ML.plugins.nlp
 
                         return intents;
                     }
+                    else
+                    {
+                        songCorrected = MediaInfoHelper.Instance.GetSimilarSong(afterVerbSong1);
+                        songCorrected.Category = MediaCategory.Music;
+                        songCorrected.SongName = songCorrected.Item;
+                        perhapsList.Add(songCorrected);
+                    }
                 }
             }
 
@@ -259,6 +290,13 @@ namespace NL2ML.plugins.nlp
 
                     return intents;
                 }
+                else
+                {
+                    songCorrected = MediaInfoHelper.Instance.GetSimilarSong(afterVerbSong1);
+                    songCorrected.Category = MediaCategory.Story;
+                    songCorrected.SongName = songCorrected.Item;
+                    perhapsList.Add(songCorrected);
+                }
             }
             // 处理随机歌曲后缀词如播放周杰伦的歌
             if (!string.IsNullOrEmpty(randomLast))
@@ -275,6 +313,13 @@ namespace NL2ML.plugins.nlp
                     intents.Add(intent);
 
                     return intents;
+                }
+                else
+                {
+                    songCorrected = MediaInfoHelper.Instance.GetSimilarSong(afterVerbSong1);
+                    songCorrected.Category = MediaCategory.Music;
+                    songCorrected.Artist = songCorrected.Item;
+                    perhapsList.Add(songCorrected);
                 }
             }
             // 处理广播后缀词
@@ -338,6 +383,83 @@ namespace NL2ML.plugins.nlp
 
                     return intents;
                 }
+                else
+                {
+                    songCorrected = MediaInfoHelper.Instance.GetSimilarSong(afterVerbSong2);
+                    songCorrected.Category = MediaCategory.Music;
+                    songCorrected.SongName = songCorrected.Item;
+                    perhapsList.Add(songCorrected);
+                }
+            }
+
+            //no intents found, check if there is perhaps list
+            if (intents.Count == 0 && perhapsList.Count > 0)
+            {
+                logger.Debug("no intents found. check perhaps list.");
+                CorrectedInfo info = perhapsList[0];
+                string category = info.Category.ToString().ToLower();
+                string name = info.SongName;
+                string artist = info.Artist;
+                logger.Debug("perhaps found: " + info);
+
+                switch (info.Category)
+                {
+                    case MediaCategory.Music:
+                        {
+                            if (!string.IsNullOrEmpty(name))
+                            {
+                                data2 = MediaInfoHelper.Instance.GetMusic(name, artist);
+                                if (data2 != null && data2.IsValid())
+                                {
+                                    logger.Debug("music found: " + data2);
+                                    Intent intent = new Intent();
+                                    intent.Action = Actions.Play;
+                                    intent.Domain = Domains.Media;
+                                    intent.Data = data2;
+                                    intent.Score = 90;
+                                    intents.Add(intent);
+
+                                    return intents;
+                                }
+                            }
+                            else if (!string.IsNullOrEmpty(artist))
+                            {
+                                data2 = MediaInfoHelper.Instance.GetRandomMediaByArtist(artist);
+                                if (data2 != null && data2.IsValid())
+                                {
+                                    Intent intent = new Intent();
+                                    intent.Action = Actions.Play;
+                                    intent.Domain = Domains.Media;
+                                    intent.Data = data2;
+                                    intent.Score = 90;
+                                    intents.Add(intent);
+
+                                    return intents;
+                                }
+                            }
+
+                            break;
+                        }
+                    case MediaCategory.Story:
+                        {
+                            data2 = MediaInfoHelper.Instance.GetMediaByCategory(info.SongName, "story");
+                            if (data2 != null && data2.IsValid())
+                            {
+                                logger.Debug("story found: " + data2);
+                                Intent intent = new Intent();
+                                intent.Action = Actions.Play;
+                                intent.Domain = Domains.Media;
+                                intent.Data = data2;
+                                intent.Score = 90;
+                                intents.Add(intent);
+
+                                return intents;
+                            }
+
+                            break;
+                        }
+                }
+                
             }
 
             return intents;
@@ -537,18 +659,6 @@ namespace NL2ML.plugins.nlp
 
         private string GetArtist(List<string> rawArtistlist)
         {
-            if (rawArtistlist.Count > 0)
-            {
-                foreach (var item in rawArtistlist)
-                {
-                    string artist = MediaItemInfoCache.Instance.GetSimilarArtist(item);
-                    if (!string.IsNullOrEmpty(artist))
-                    {
-                        return artist;
-                    }
-                }
-            }
-
             return "";
         }
 

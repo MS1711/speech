@@ -22,4 +22,10 @@ namespace NLPWebService.Models
         public MediaCategory Category { get; set; }
 
     }
+
+    public class CorrectedInfo
+    {
+        public float Score { get; set; }
+        public string Item { get; set; }
+    }
 }

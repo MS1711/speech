@@ -15,10 +15,6 @@ namespace NL2ML.dbhelper
 
         MediaData GetRandomMusicByGenre(string artist, string genre);
 
-        void LoadAllArtist(MediaItemInfoCache set);
-
-        void LoadAllSong(MediaItemInfoCache mediaItemInfoCache);
-
         MediaData GetMediaByCategory(string name, string category);
 
         MediaData GetRandomMusicByArtist(string name);
@@ -28,5 +24,9 @@ namespace NL2ML.dbhelper
         MediaData GetRandomByCategory(string cate);
 
         MediaData GetMediaByName(string suffix);
+
+        CorrectedInfo GetCorrectedSong(string suffix);
+
+        CorrectedInfo GetCorrectedArtist(string suffix);
     }
 }

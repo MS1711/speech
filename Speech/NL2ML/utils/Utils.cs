@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace NL2ML.utils
 {
-    sealed class Utils
+    public sealed class Utils
     {
         public static float Leven(string value1, string value2)
         {
@@ -56,6 +60,38 @@ namespace NL2ML.utils
             }
 
             return sb.ToString();
+        }
+
+        public static string GetTom61InnerAudioLink(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+            {
+                return "";
+            }
+
+            // Create a request for the URL. 
+            WebRequest request = WebRequest.Create(url);
+            // Get the response.
+            using (WebResponse response = request.GetResponse())
+            {
+                // Display the status.
+                // Get the stream containing content returned by the server.
+                Stream dataStream = response.GetResponseStream();
+                // Open the stream using a StreamReader for easy access.
+                using (StreamReader reader = new StreamReader(dataStream, Encoding.GetEncoding("gb2312")))
+                {
+                    // Read the content.
+                    string input = reader.ReadToEnd();
+
+                    Regex regex = new Regex(@"""setMedia"",\s*{mp3:""(?<url>.+)""}");
+                    MatchCollection mcs = regex.Matches(input);
+                    if (mcs.Count > 0)
+                    {
+                        return HttpUtility.UrlPathEncode(mcs[0].Groups["url"].Value);
+                    }
+                }
+            }
+            return "";
         }
     }
 }

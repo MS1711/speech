@@ -65,16 +65,6 @@ namespace NL2ML.dbhelper
             return res;
         }
 
-        public void LoadAllArtist(MediaItemInfoCache set)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void LoadAllSong(MediaItemInfoCache mediaItemInfoCache)
-        {
-            throw new NotImplementedException();
-        }
-
         public models.MediaData GetMediaByCategory(string name, string category)
         {
             string url = string.Format(BaseUrl + "{1}={2}&{3}={4}", "byncate",
@@ -114,6 +104,33 @@ namespace NL2ML.dbhelper
             string url = string.Format(BaseUrl + "{1}={2}", "bycate",
                 "cate", HttpUtility.UrlEncode(cate, Encoding.UTF8));
             MediaData res = GetResponse<MediaData>(url);
+            return res;
+        }
+
+
+        public CorrectedInfo GetCorrectedSong(string suffix)
+        {
+            if (string.IsNullOrEmpty(suffix))
+            {
+                return new CorrectedInfo();
+            }
+            string url = string.Format(BaseUrl + "{1}={2}", "correctsong",
+                "song", HttpUtility.UrlEncode(suffix, Encoding.UTF8));
+            CorrectedInfo res = GetResponse<CorrectedInfo>(url);
+            return res;
+        }
+
+
+        public CorrectedInfo GetCorrectedArtist(string suffix)
+        {
+            if (string.IsNullOrEmpty(suffix))
+            {
+                return new CorrectedInfo();
+            }
+
+            string url = string.Format(BaseUrl + "{1}={2}", "correctartist",
+                "artist", HttpUtility.UrlEncode(suffix, Encoding.UTF8));
+            CorrectedInfo res = GetResponse<CorrectedInfo>(url);
             return res;
         }
     }

@@ -28,6 +28,12 @@ namespace NLPTest
             Console.Read();
         }
 
+        private static void Sample12()
+        {
+            string u = Utils.GetTom61InnerAudioLink("http://www.tom61.com/e/DownSys/play/?classid=463&id=10688&pathid=0");
+            Console.WriteLine(u);
+        }
+
         private static void Sample10()
         {
             WebDataHelper h = new WebDataHelper();
@@ -43,17 +49,7 @@ namespace NLPTest
         private static void Sample3()
         {
             NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
-            ins.Process("我想听阿拉丁神灯这个故事");
-        }
-
-        private static void Sample7()
-        {
-            MediaItemInfoCache c = MediaItemInfoCache.Instance;
-            c.Load(@"C:/Temp/artist", @"C:/Temp/songs");
-            Console.WriteLine(c.GetSimilarArtist("凤凰传奇的最炫民族风"));
-            logger.Debug("1");
-            Console.WriteLine(c.GetSimilarSong("凤凰传奇的歌"));
-            logger.Debug("2");
+            ins.Process("北京最近几天天气如何");
         }
 
         private static void Sample5()
@@ -88,7 +84,7 @@ namespace NLPTest
         static void Sample1()
         {
             string[] s = {
-                             "低点声",
+                             "北京今天天气如何",
                              "我不建议听周杰伦同学的菊花台",
                              "请把客厅的灯打开",
                              "这首歌真好听",
@@ -97,11 +93,11 @@ namespace NLPTest
             ////Console.WriteLine(tag.tag(s));
             //POSTagger tag2 = new POSTagger(tag, "");
 
-            CNFactory f = CNFactory.GetInstance(@"C:/Temp/");
-            CNFactory.loadDict(@"C:\Temp\mydict2.txt");
-            CNFactory.loadDict(@"C:\Temp\devicedict2.txt");
-            CNFactory.loadDict(@"C:\Temp\verbdict2.txt");
-            CNFactory.loadDict(@"C:\Temp\genredict.txt");
+            CNFactory f = CNFactory.GetInstance(@"C:/workspace/nlpdictdata/");
+            CNFactory.loadDict(@"C:\workspace/nlpdictdata\mydict2.txt");
+            CNFactory.loadDict(@"C:\workspace/nlpdictdata\devicedict2.txt");
+            CNFactory.loadDict(@"C:\workspace/nlpdictdata\verbdict2.txt");
+            CNFactory.loadDict(@"C:\workspace/nlpdictdata\genredict.txt");
 
             foreach (var item in s)
             {
