@@ -67,6 +67,7 @@
     <Compile Include="handlers\IIntentHandler.cs" />
     <Compile Include="handlers\IntentManager.cs" />
     <Compile Include="handlers\MediaContentHandler.cs" />
+    <Compile Include="handlers\RobotHandler.cs" />
     <Compile Include="handlers\SmartHouseHandler.cs" />
     <Compile Include="handlers\WeatherHandler.cs" />
     <Compile Include="mediaProvider\BaiduMediaContentProvider.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="plugins\nlp\IntentBuilder.cs" />
     <Compile Include="plugins\nlp\MediaIntentBuilder.cs" />
     <Compile Include="plugins\nlp\NLPModule.cs" />
+    <Compile Include="plugins\nlp\RobotIntentBuilder.cs" />
     <Compile Include="plugins\nlp\WeatherIntentBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tolerance\ITolerance.cs" />

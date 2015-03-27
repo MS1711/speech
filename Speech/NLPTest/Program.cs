@@ -21,6 +21,7 @@ using System.Media;
 using System.Web;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using NL2ML.handlers;
 
 namespace NLPTest
 {
@@ -87,6 +88,14 @@ namespace NLPTest
         {
             Sample3();
             Console.Read();
+        }
+
+        private static void Sample17()
+        {
+            RobotHandler h = new RobotHandler();
+            string ans = h.GetTulingAnswer("北京到上海今天的航班");
+            string abs = h.MakeAbstract(ans);
+            Console.WriteLine(abs);
         }
 
         private static void Sample16()
@@ -314,14 +323,18 @@ namespace NLPTest
                 //with story suffix
                 "我想听白雪公主的故事", //15
                 "我想听白雪公主这个故事", //16
-                //story suffix error tolerance
-                "我想听春天的故事", //17
-                "我想听小城故事", //18
-                "我想听张艾嘉的光阴的故事" //19
+                //story error tolerance
+                "我想听白菜公主这个故事", //17
+                //music with story suffix error tolerance
+                "我想听春天的故事", //18
+                "我想听小城故事", //19
+                "我想听张艾嘉的光阴的故事", //20
 
+                //free talk
+                "北京到上海今天的航班"//21
             };
             NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
-            Result res = ins.Process(sample[19]);
+            Result res = ins.Process(sample[21]);
             string s = res.Msg;
         }
 

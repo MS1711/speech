@@ -29,6 +29,8 @@ namespace NL2ML.plugins.nlp
 
             builders.Add(new MediaIntentBuilder());
             builders.Add(new WeatherIntentBuilder());
+            builders.Add(new WeatherIntentBuilder());
+            builders.Add(new RobotIntentBuilder());
         }
 
         public Intent[] Parse(string input)

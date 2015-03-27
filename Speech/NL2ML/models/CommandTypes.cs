@@ -12,6 +12,7 @@ namespace NL2ML.models
         Media,
         Weather,
         SmartDevice,
+        QA,
     }
 
     public enum Actions

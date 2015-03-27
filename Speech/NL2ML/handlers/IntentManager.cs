@@ -11,6 +11,7 @@ namespace NL2ML.handlers
     {
         private static IntentManager instance = new IntentManager();
         private Dictionary<Domains, IIntentHandler> handlerMap = new Dictionary<Domains, IIntentHandler>();
+        private IIntentHandler defaultHandler = new RobotHandler();
 
         private IntentManager()
         {
@@ -35,6 +36,15 @@ namespace NL2ML.handlers
                 }
             }
 
+            foreach (var item in intent)
+            {
+                Result res = defaultHandler.handle(item);
+                if (res != null && res.IsOK)
+                {
+                    return res;
+                } 
+            }
+            
             return new Result { IsOK = false };
         }
 
