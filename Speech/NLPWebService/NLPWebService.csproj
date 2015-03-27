@@ -87,7 +87,6 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MediaIndexerController.cs" />
-    <Compile Include="Controllers\NL2MLController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -103,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="log4net.config" />
     <None Include="Properties\PublishProfiles\nlpwebservice.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -113,16 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NL2ML\NL2ML.csproj">
-      <Project>{b1b8c232-0c13-46df-9e5c-736ec470c5fc}</Project>
-      <Name>NL2ML</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NLPCore\NLPCore.csproj">
-      <Project>{6d4f5be0-82df-452e-97e1-38b0e88e352b}</Project>
-      <Name>NLPCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -25,18 +25,28 @@ namespace NL2ML.utils
             get { return MediaInfoHelper.instance; }
         }
 
-        public MediaData GetMusic(string name, string artist)
+        public MediaData GetMusicOnline(string name, string artist)
         {
             return provider.GetMusic(name, artist);
         }
 
         public MediaData GetMusicByGenre(string genre)
         {
-            MediaData data = dbHelper.GetRandomMusicByGenre(genre);
-            if (!string.IsNullOrEmpty(data.Name))
+            int maxRetry = 10;
+            while(maxRetry > 0)
             {
-                return provider.GetMusic(data.Name, data.Artist);
+                MediaData data = dbHelper.GetRandomMusicByGenre(genre);
+                if (!string.IsNullOrEmpty(data.Name))
+                {
+                    MediaData t = provider.GetMusic(data.Name, "");
+                    if (t != null)
+                    {
+                        return t;
+                    }
+                }
+                maxRetry--;
             }
+            
 
             return null;
         }
@@ -54,7 +64,13 @@ namespace NL2ML.utils
 
         internal MediaData GetMusicByName(string songName)
         {
-            return provider.GetMusic(songName, "");
+            MediaData data = dbHelper.GetMediaByCategory(songName, "music");
+            if (!string.IsNullOrEmpty(data.Name))
+            {
+                return provider.GetMusic(data.Name, data.Artist);
+            }
+
+            return null;
         }
 
         internal MediaData GetMusicByGenre(string genre, string songName)
@@ -71,13 +87,29 @@ namespace NL2ML.utils
 
         internal MediaData GetRandomMediaByCategory(string category)
         {
-            MediaData data = dbHelper.GetRandomByCategory(category);
-            if (data != null && !string.IsNullOrEmpty(data.Name) && data.Category == MediaCategory.Music)
+            int maxRetry = 10;
+            while (maxRetry > 0)
             {
-                return provider.GetMusic(data.Name, "");
+                MediaData data = dbHelper.GetRandomByCategory(category);
+                if (data != null && !string.IsNullOrEmpty(data.Name))
+                {
+                    if (data.Category == MediaCategory.Music)
+                    {
+                        MediaData t = provider.GetMusic(data.Name, "");
+                        if (t != null)
+                        {
+                            return t;
+                        }
+                    }
+                    else
+                    {
+                        return data;
+                    }
+                    
+                }
+                maxRetry--;
             }
-
-            return data;
+            return null;
         }
 
         internal MediaData GetMediaByCategory(string name, string category)
@@ -87,10 +119,16 @@ namespace NL2ML.utils
 
         internal MediaData GetRandomMediaByArtist(string name)
         {
-            MediaData data = dbHelper.GetRandomMusicByArtist(name);
-            if (!string.IsNullOrEmpty(data.Name))
+            int maxRetry = 10;
+            while (maxRetry > 0)
             {
-                return provider.GetMusic(data.Name, data.Artist);
+                MediaData item = dbHelper.GetRandomMusicByArtist(name);
+                MediaData t = provider.GetMusic(item.Name, item.Artist);
+                if (t != null)
+                {
+                    return t;
+                }
+
             }
 
             return null;
@@ -112,6 +150,97 @@ namespace NL2ML.utils
             return data;
         }
 
+        internal List<MediaData> GetMediaListByName(string suffix)
+        {
+            List<MediaData> data = dbHelper.GetMediaListByName(suffix);
+            foreach (var item in data)
+            {
+                if (item == null || item.Category == MediaCategory.Music)
+                {
+                    MediaData d = provider.GetMusic(suffix, "");
+                    if (!string.IsNullOrEmpty(d.Url))
+                    {
+                        item.Url = d.Url;
+                    }
+                    if (!string.IsNullOrEmpty(d.Durl))
+                    {
+                        item.Durl = d.Durl;
+                    }
+                }
+            }
+            
+            return data;
+        }
+
+        internal List<MediaData> GetMediaListByGenericQuery(Dictionary<string, string> query)
+        {
+            List<MediaData> data = new List<MediaData>();
+            string mode = "S";
+            if (query.ContainsKey("Mode"))
+            {
+                mode = query["Mode"];
+                query.Remove("Mode");
+            }
+            
+            if (mode.Equals("S"))
+            {
+                query.Remove("Mode");
+                MediaData t = dbHelper.GetMediaByGenericQuery(query);
+                data.Add(t);
+            }
+            else if (mode.Equals("M"))
+            {
+                data.AddRange(dbHelper.GetMediaListByGenericQuery(query));
+            }
+
+            foreach (var item in data)
+            {
+                if (item == null || item.Category == MediaCategory.Music)
+                {
+                    if (string.IsNullOrEmpty(item.Url) && string.IsNullOrEmpty(item.Durl))
+                    {
+                        MediaData d = provider.GetMusic(item.Name, item.Artist);
+                        if (d == null)
+                        {
+                            continue;
+                        }
+                        if (!string.IsNullOrEmpty(d.Url))
+                        {
+                            item.Url = d.Url;
+                        }
+                        if (!string.IsNullOrEmpty(d.Durl))
+                        {
+                            item.Durl = d.Durl;
+                        }
+                    }
+                    
+                }
+            }
+
+            return data;
+        }
+
+        internal MediaData GetMediaByGenericQuery(Dictionary<string, string> query)
+        {
+            MediaData item = dbHelper.GetMediaByGenericQuery(query);
+
+            if (item == null || item.Category == MediaCategory.Music)
+            {
+                MediaData d = provider.GetMusic(item.Name, item.Artist);
+                if (!string.IsNullOrEmpty(d.Url))
+                {
+                    item.Url = d.Url;
+                }
+                if (!string.IsNullOrEmpty(d.Durl))
+                {
+                    item.Durl = d.Durl;
+                }
+            }
+
+
+            return item;
+        }
+
         internal CorrectedInfo GetSimilarSong(string suffix)
         {
             return dbHelper.GetCorrectedSong(suffix);
@@ -120,6 +249,17 @@ namespace NL2ML.utils
         internal CorrectedInfo GetSimilarArtist(string suffix)
         {
             return dbHelper.GetCorrectedArtist(suffix);
+        }
+
+        internal MediaData GetMusicByArtistAndSong(string artist, string song)
+        {
+            MediaData data = dbHelper.GetMusicByArtistAndSong(artist, song);
+            if (data == null || data.Category == MediaCategory.Music)
+            {
+                data = provider.GetMusic(data.Name, data.Artist);
+            }
+
+            return data;
         }
     }
 }

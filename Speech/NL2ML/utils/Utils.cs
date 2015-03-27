@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NL2ML.models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -62,36 +63,161 @@ namespace NL2ML.utils
             return sb.ToString();
         }
 
-        public static string GetTom61InnerAudioLink(string url)
+        public static bool IsVagueMusic(string word)
         {
-            if (string.IsNullOrEmpty(url))
+            string[] cate = new string[] { "歌", "歌曲", "音乐" };
+            return (from c in cate where c.Equals(word, StringComparison.OrdinalIgnoreCase) select c).Count() > 0;
+        }
+
+        public static bool IsVagueStory(string word)
+        {
+            string[] cate = new string[] { "故事", "童话", "儿童故事" };
+            return (from c in cate where c.Equals(word, StringComparison.OrdinalIgnoreCase) select c).Count() > 0;
+        }
+
+        public static bool IsVagueRadio(string word)
+        {
+            string[] cate = new string[] { "广播", "调频", "调幅", "电台", "广播电台" };
+            return (from c in cate where c.Equals(word, StringComparison.OrdinalIgnoreCase) select c).Count() > 0;
+        }
+
+        public static int[] LocatePOS(Context context, string POS)
+        {
+            List<int> loc = new List<int>();
+            string[][] tags = context.Tags;
+            for (int i = 0; i < tags[0].Length; i++)
             {
-                return "";
+                if (tags[1][i].Equals(POS))
+                {
+                    loc.Add(i);
+                }
             }
 
-            // Create a request for the URL. 
-            WebRequest request = WebRequest.Create(url);
-            // Get the response.
-            using (WebResponse response = request.GetResponse())
-            {
-                // Display the status.
-                // Get the stream containing content returned by the server.
-                Stream dataStream = response.GetResponseStream();
-                // Open the stream using a StreamReader for easy access.
-                using (StreamReader reader = new StreamReader(dataStream, Encoding.GetEncoding("gb2312")))
-                {
-                    // Read the content.
-                    string input = reader.ReadToEnd();
+            return loc.ToArray();
+        }
 
-                    Regex regex = new Regex(@"""setMedia"",\s*{mp3:""(?<url>.+)""}");
-                    MatchCollection mcs = regex.Matches(input);
-                    if (mcs.Count > 0)
+        public static Context SubContext(Context context, int start, int end)
+        {
+            Context cnt = new Context();
+            cnt.RawString = "";
+            cnt.Tags = null;
+
+            if (start >= context.Tags[0].Length)
+            {
+                return cnt;
+            }
+
+            if (end > context.Tags[0].Length)
+            {
+                end = context.Tags[0].Length;
+            }
+
+            List<List<string>> list = new List<List<string>>();
+            list.Add(new List<string>());
+            list.Add(new List<string>());
+
+            string[][] tags = context.Tags;
+            for (int i = start; i < end; i++)
+            {
+                list[0].Add(tags[0][i]);
+                list[1].Add(tags[1][i]);
+            }
+
+            string[][] cpy = new string[2][];
+            cpy[0] = list[0].ToArray();
+            cpy[1] = list[1].ToArray();
+
+            cnt.Tags = cpy;
+            cnt.RawString = string.Join("", cpy[0]);
+
+            return cnt;
+        }
+
+        public static string FixSongName(string name)
+        {
+            name = name.Trim();
+            name = name.Replace(" ", "");
+            StringBuilder sb = new StringBuilder();
+            bool start = false;
+            for (int i = 0; i < name.Length; i++)
+            {
+                if (Char.IsLetterOrDigit(name[i]))
+                {
+                    start = true;
+                    sb.Append(name[i]);
+                }
+                else
+                {
+                    if (start)
                     {
-                        return HttpUtility.UrlPathEncode(mcs[0].Groups["url"].Value);
+                        break;
                     }
                 }
             }
+
+            return sb.ToString();
+        }
+
+        public static string GetTom61InnerAudioLink(string url)
+        {
+            return url;
+            //if (string.IsNullOrEmpty(url))
+            //{
+            //    return "";
+            //}
+
+            //// Create a request for the URL. 
+            //WebRequest request = WebRequest.Create(url);
+            //// Get the response.
+            //using (WebResponse response = request.GetResponse())
+            //{
+            //    // Display the status.
+            //    // Get the stream containing content returned by the server.
+            //    Stream dataStream = response.GetResponseStream();
+            //    // Open the stream using a StreamReader for easy access.
+            //    using (StreamReader reader = new StreamReader(dataStream, Encoding.GetEncoding("gb2312")))
+            //    {
+            //        // Read the content.
+            //        string input = reader.ReadToEnd();
+
+            //        Regex regex = new Regex(@"""setMedia"",\s*{mp3:""(?<url>.+)""}");
+            //        MatchCollection mcs = regex.Matches(input);
+            //        if (mcs.Count > 0)
+            //        {
+            //            return HttpUtility.UrlPathEncode(mcs[0].Groups["url"].Value);
+            //        }
+            //    }
+            //}
+            //return "";
+        }
+
+        internal static string TranslateToCategory(string raw)
+        {
+            if (IsVagueMusic(raw))
+            {
+                return "music";
+            }
+            if (IsVagueRadio(raw))
+            {
+                return "radio";
+            }
+            if (IsVagueStory(raw))
+            {
+                return "story";
+            }
+
             return "";
+        }
+
+        public static string DumpDict<T, V>(Dictionary<T, V> dict)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in dict.Keys)
+            {
+                sb.Append(item + "/" + dict[item] + ", ");
+            }
+
+            return "[" + sb.ToString() + "]";
         }
     }
 }

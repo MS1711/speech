@@ -4,7 +4,6 @@ using NL2ML.handlers;
 using NL2ML.models;
 using NL2ML.plugins;
 using NL2ML.plugins.nlp;
-using NL2ML.plugins.regex;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +15,7 @@ namespace NL2ML.api
     public class NL2ML
     {
         private static ILog logger = LogManager.GetLogger("common");
+        private static ILog nlplogger = LogManager.GetLogger("nl2ml");
         private static NL2ML instance = new NL2ML();
         private List<INL2MLModule> modules = new List<INL2MLModule>();
 
@@ -47,9 +47,15 @@ namespace NL2ML.api
             }
 
             intents.Sort((o1, o2) => {
-                return o2.Score - o1.Score;
+                int d = o1.Action - o2.Action;
+                if (d == 0)
+                {
+                    d = o2.Score - o1.Score;
+                }
+                return d;
             });
 
+            nlplogger.Debug("intent created: " + string.Join(", ", intents));
             return IntentManager.Instance.Process(intents.ToArray());
         }
     }

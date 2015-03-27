@@ -10,6 +10,8 @@ namespace NLPWebService.Models
     {
         MediaInfo GetMediaInfo(Dictionary<string, string> query);
 
+        List<MediaInfo> GetMediaInfoList(Dictionary<string, string> query, int max);
+
         string TranslateAction(string action);
     }
 }

@@ -15,6 +15,12 @@ using System.Runtime.InteropServices;
 using System;
 using NL2ML.consts;
 using NL2ML.utils;
+using System.Net;
+using System.IO;
+using System.Media;
+using System.Web;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace NLPTest
 {
@@ -22,16 +28,245 @@ namespace NLPTest
     {
         private static ILog logger = LogManager.GetLogger("common");
 
+        [DataContract]
+        public class AdmAccessToken
+        {
+            [DataMember]
+            public string access_token { get; set; }
+            [DataMember]
+            public string token_type { get; set; }
+            [DataMember]
+            public string expires_in { get; set; }
+            [DataMember]
+            public string scope { get; set; }
+        }
+
+        public class AdmAuthentication
+        {
+            public static readonly string DatamarketAccessUri = "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13";
+            private string clientId;
+            private string cientSecret;
+            private string request;
+
+            public AdmAuthentication(string clientId, string clientSecret)
+            {
+                this.clientId = clientId;
+                this.cientSecret = clientSecret;
+                //If clientid or client secret has special characters, encode before sending request
+                this.request = string.Format("grant_type=client_credentials&client_id={0}&client_secret={1}&scope=http://api.microsofttranslator.com", HttpUtility.UrlEncode(clientId), HttpUtility.UrlEncode(clientSecret));
+            }
+
+            public AdmAccessToken GetAccessToken()
+            {
+                return HttpPost(DatamarketAccessUri, this.request);
+            }
+
+            private AdmAccessToken HttpPost(string DatamarketAccessUri, string requestDetails)
+            {
+                //Prepare OAuth request 
+                WebRequest webRequest = WebRequest.Create(DatamarketAccessUri);
+                webRequest.ContentType = "application/x-www-form-urlencoded";
+                webRequest.Method = "POST";
+                byte[] bytes = Encoding.ASCII.GetBytes(requestDetails);
+                webRequest.ContentLength = bytes.Length;
+                using (Stream outputStream = webRequest.GetRequestStream())
+                {
+                    outputStream.Write(bytes, 0, bytes.Length);
+                }
+                using (WebResponse webResponse = webRequest.GetResponse())
+                {
+                    DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AdmAccessToken));
+                    //Get deserialized object from JSON stream
+                    AdmAccessToken token = (AdmAccessToken)serializer.ReadObject(webResponse.GetResponseStream());
+                    return token;
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             Sample3();
             Console.Read();
         }
 
+        private static void Sample16()
+        {
+            //string url = @"http://www.tom61.com/youshengduwu/youeryoushenggushi/index_{0}.html";
+            //for (int i = 21; i <= 37; i++)
+            //{
+            //    string t = string.Format(url, i);
+            //    Tom61ContentGrabber.GrabContent(t);
+            //}
+
+            Tom61ContentGrabber.GenerateMongoFile();
+            
+        }
+
+        private static void Sample15()
+        {
+            List<int> list = new List<int>() { 1, 2, 3, 4, 5 };
+            var sub = from i in list where i % 2 == 0 select i into test select test;
+        }
+
+        private static void Sample14()
+        {
+            AdmAccessToken admToken;
+            string headerValue;
+            //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
+            AdmAuthentication admAuth = new AdmAuthentication("MyTTS", "GmMgealz1CtUWi4nLzCNepWPr2U8yeKF3g5mWEkPqYU=");
+            try
+            {
+                admToken = admAuth.GetAccessToken();
+                DateTime tokenReceived = DateTime.Now;
+                // Create a header with the access_token property of the returned token
+                headerValue = "Bearer " + admToken.access_token;
+                GetLanguagesForSpeakMethod(headerValue);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey(true);
+            }
+        }
+
+        private static void Sample13()
+        {
+            AdmAccessToken admToken;
+            string headerValue;
+            //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
+            //Refer obtaining AccessToken (http://msdn.microsoft.com/en-us/library/hh454950.aspx) 
+            AdmAuthentication admAuth = new AdmAuthentication("MyTTS", "GmMgealz1CtUWi4nLzCNepWPr2U8yeKF3g5mWEkPqYU=");
+            try
+            {
+                admToken = admAuth.GetAccessToken();
+                // Create a header with the access_token property of the returned token
+                headerValue = "Bearer " + admToken.access_token;
+                SpeakMethod(headerValue);
+            }
+            catch (WebException e)
+            {
+                ProcessWebException(e);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey(true);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey(true);
+            }
+        }
+
+        private static void GetLanguagesForSpeakMethod(string authToken)
+        {
+
+            string uri = "http://api.microsofttranslator.com/v2/Http.svc/GetLanguagesForSpeak";
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(uri);
+            httpWebRequest.Headers.Add("Authorization", authToken);
+            WebResponse response = null;
+            try
+            {
+                response = httpWebRequest.GetResponse();
+                using (Stream stream = response.GetResponseStream())
+                {
+
+                    System.Runtime.Serialization.DataContractSerializer dcs = new System.Runtime.Serialization.DataContractSerializer(typeof(List<string>));
+                    List<string> languagesForSpeak = (List<string>)dcs.ReadObject(stream);
+                    Console.WriteLine("The languages available for speak are: ");
+                    languagesForSpeak.ForEach(a => Console.WriteLine(a));
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey(true);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (response != null)
+                {
+                    response.Close();
+                    response = null;
+                }
+            }
+        }
+
+        private static void ReadWriteStream(Stream readStream, Stream writeStream)
+        {
+            int Length = 2560;
+            Byte[] buffer = new Byte[Length];
+            int bytesRead = readStream.Read(buffer, 0, Length);
+            // write the required bytes
+            while (bytesRead > 0)
+            {
+                writeStream.Write(buffer, 0, bytesRead);
+                bytesRead = readStream.Read(buffer, 0, Length);
+            }
+            readStream.Close();
+            writeStream.Close();
+        }
+
+        private static void SpeakMethod(string authToken)
+        {
+            string ss = @"好的，马上做";
+            string uri = "http://api.microsofttranslator.com/v2/Http.svc/Speak?text=" + ss + "&language=zh-chs&format=" + HttpUtility.UrlEncode("audio/wav") + "&options=MaxQuality";
+
+            WebRequest webRequest = WebRequest.Create(uri);
+            webRequest.Headers.Add("Authorization", authToken);
+            WebResponse response = null;
+            try
+            {
+                response = webRequest.GetResponse();
+                using (Stream stream = response.GetResponseStream())
+                {
+                    //FileStream writeStream = new FileStream(@"C:/workspace/female.wav", FileMode.Create, FileAccess.Write);
+                    //ReadWriteStream(stream, writeStream);
+                    using (SoundPlayer player = new SoundPlayer(stream))
+                    {
+                        player.PlaySync();
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (response != null)
+                {
+                    response.Close();
+                    response = null;
+                }
+            }
+        }
+        private static void ProcessWebException(WebException e)
+        {
+            Console.WriteLine("{0}", e.ToString());
+            // Obtain detailed error information
+            string strResponse = string.Empty;
+            using (HttpWebResponse response = (HttpWebResponse)e.Response)
+            {
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    using (StreamReader sr = new StreamReader(responseStream, System.Text.Encoding.ASCII))
+                    {
+                        strResponse = sr.ReadToEnd();
+                    }
+                }
+            }
+            Console.WriteLine("Http status code={0}, error message={1}", e.Status, strResponse);
+        }
+
         private static void Sample12()
         {
-            string u = Utils.GetTom61InnerAudioLink("http://www.tom61.com/e/DownSys/play/?classid=463&id=10688&pathid=0");
-            Console.WriteLine(u);
+            ServiceReference1.NLPServiceClient n = new ServiceReference1.NLPServiceClient();
+            ServiceReference1.ResultInfo r = n.GetResult("我想听北京交通广播");
+            logger.Debug(r.Msg);
         }
 
         private static void Sample10()
@@ -48,8 +283,46 @@ namespace NLPTest
 
         private static void Sample3()
         {
+            string[] sample = new string[] {
+                //category
+                "我想听歌", //0
+                "我想听故事", //1
+                "我想听广播", //2
+
+                //genre
+                "我想听摇滚", //3
+                "我想听流行歌曲", //4
+                //genre error tolerance
+                "我想听流行音乐", //5
+
+                //song name
+                "我想听东风破", //6
+                //song error tolerance
+                "我想听把悲伤留个自己", //7
+                "我想听把悲痛留个自己", //8
+                
+                //xxx的xxx,concrete aritst and song
+                "我想听周杰伦的东风破", //9
+                "我想听周杰伦演唱的东风破", //10
+                //concrete artist and vague category
+                "我想听周杰伦的歌", //11
+                "我想听郭德纲的相声", //12
+                
+                //with music suffix
+                "我想听东风破这首歌", //13
+                "我想听东风破这歌", //14
+                //with story suffix
+                "我想听白雪公主的故事", //15
+                "我想听白雪公主这个故事", //16
+                //story suffix error tolerance
+                "我想听春天的故事", //17
+                "我想听小城故事", //18
+                "我想听张艾嘉的光阴的故事" //19
+
+            };
             NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
-            ins.Process("北京最近几天天气如何");
+            Result res = ins.Process(sample[19]);
+            string s = res.Msg;
         }
 
         private static void Sample5()
@@ -83,6 +356,7 @@ namespace NLPTest
 
         static void Sample1()
         {
+            ServiceReference1.NLPServiceClient vv = new ServiceReference1.NLPServiceClient();
             string[] s = {
                              "北京今天天气如何",
                              "我不建议听周杰伦同学的菊花台",
@@ -108,46 +382,6 @@ namespace NLPTest
                 Console.WriteLine(ss);
             }
 
-            
-        }
-
-        public static float Leven(string value1, string value2)
-        {
-            int len1 = value1.Length;
-            int len2 = value2.Length;
-            int[,] dif = new int[len1 + 1, len2 + 1];
-            for (int a = 0; a <= len1; a++)
-            {
-                dif[a, 0] = a;
-            }
-            for (int a = 0; a <= len2; a++)
-            {
-                dif[0, a] = a;
-            }
-            int temp = 0;
-            for (int i = 1; i <= len1; i++)
-            {
-                for (int j = 1; j <= len2; j++)
-                {
-                    if (value1[i - 1] == value2[j - 1])
-                    { temp = 0; }
-                    else
-                    {
-                        temp = 1;
-                    }
-                    dif[i, j] = Min(dif[i - 1, j - 1] + temp, dif[i, j - 1] + 1,
-                        dif[i - 1, j] + 1);
-                }
-            }
-
-            float similarity = 1 - (float)dif[len1, len2] / Math.Max(len1, len2);
-            return similarity;
-        }
-
-        public static int Min(int a, int b, int c)
-        {
-            int i = a < b ? a : b;
-            return i = i < c ? i : c;
         }
     }
 }

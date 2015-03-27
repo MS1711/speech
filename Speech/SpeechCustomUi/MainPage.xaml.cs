@@ -25,6 +25,7 @@ using Microsoft.Speech.TtsService.HttpClient;
 using Windows.Storage.Streams;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Globalization;
+using SpeechCustomUi.ServiceReference1;
 
 namespace SpeechCustomUi
 {
@@ -145,10 +146,20 @@ namespace SpeechCustomUi
             //NLPWebServiceDelegateClient sc= new NLPWebServiceDelegateClient();
             NLPWebServiceClient sc = new NLPWebServiceClient();
             Task<DoNLPResponse> rt = sc.DoNLPAsync(ans);
-            
+
             string ss = rt.Result.Body.@return;
             return ss;
         }
+
+        private async Task<ResultInfo> getresponse2(string ans)
+        {
+            //ans = ans.Substring(1);
+            NLPServiceClient ss = new NLPServiceClient();
+            var res = await ss.GetResultAsync(ans);
+            return res;
+        }
+
+        
 
         private async Task<bool> pronounce(string ack)
         {
@@ -278,7 +289,8 @@ namespace SpeechCustomUi
                 {
                     ans = botchoice + ans;
                     if (!usebing) ans = "C" + ans;
-                    ack = getresponse(ans);
+                    var ackInfo = await getresponse2(ans);
+                    ack = ackInfo.ErrorCode == 0 ? "SUCCESS" : "";
                     if (ack == "SUCCESS")
                     {
                         Random ran = new Random();
@@ -314,31 +326,47 @@ namespace SpeechCustomUi
 
         private async void SpeakButton_Click(object sender, RoutedEventArgs e)
         {
-            //await Task.Delay(TimeSpan.FromSeconds(0.5));
-            cancel = false;
-            //SR.Dispose();
-            //ListenAction.IsEnabled = true;
-            //if (ListenAction.Visibility == Windows.UI.Xaml.Visibility.Collapsed)
-            //{
-            Rcn_Spk();
-            //}
-            CancelButton.IsEnabled = true;
-            SpeakButton.IsEnabled = false;
-            SpeakButton2.IsEnabled = false;
+            string ack = "";
+            var ackInfo = await getresponse2(UserContent.Text);
+            if (ackInfo.ErrorCode == 0)
+            {
+                ack = ackInfo.Msg;
+                Random ran = new Random();
+                int r = ran.Next(0, 7);
+                if (string.IsNullOrEmpty(ack))
+                {
+                    ack = feedBackWords[r];
+                }
+                
+            }
+            addToBlock("小娜：" + ack);
+            await pronounce(resultProcess(ack));
 
+            ////await Task.Delay(TimeSpan.FromSeconds(0.5));
+            //cancel = false;
+            ////SR.Dispose();
+            ////ListenAction.IsEnabled = true;
+            ////if (ListenAction.Visibility == Windows.UI.Xaml.Visibility.Collapsed)
+            ////{
+            //Rcn_Spk();
+            ////}
+            //CancelButton.IsEnabled = true;
+            //SpeakButton.IsEnabled = false;
+            //SpeakButton2.IsEnabled = false;
+
+            ////if (this.cortanaPanel.Visibility == Windows.UI.Xaml.Visibility.Visible)
+            ////{
+            //StopAllMedia();
+            //this.mediaEleListen.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            //this.mediaEleListen.Play();
+            ////}
             //if (this.cortanaPanel.Visibility == Windows.UI.Xaml.Visibility.Visible)
             //{
-            StopAllMedia();
-            this.mediaEleListen.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            this.mediaEleListen.Play();
+            //    this.UserContent2.Focus(Windows.UI.Xaml.FocusState.Programmatic);
             //}
-            if (this.cortanaPanel.Visibility == Windows.UI.Xaml.Visibility.Visible)
-            {
-                this.UserContent2.Focus(Windows.UI.Xaml.FocusState.Programmatic);
-            }
 
-            //string msg = getresponse("$" + "查询室内空气状况");
-            //resultDetails.Text += msg + "\n";
+            ////string msg = getresponse("$" + "查询室内空气状况");
+            ////resultDetails.Text += msg + "\n";
         }
 
         

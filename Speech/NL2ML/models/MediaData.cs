@@ -24,6 +24,7 @@ namespace NL2ML.models
         //high definition url
         public string Durl { get; set; }
         public MediaCategory Category { get; set; }
+        public List<MediaData> Suggestions { get; set; }
 
         public bool IsValid() 
         {
@@ -32,7 +33,22 @@ namespace NL2ML.models
 
         public override string ToString()
         {
-            return string.Format("[{0}, {1}, {2}]", Name, Artist, Genre);
+            string list = "";
+            if (Suggestions != null)
+            {
+                list = string.Join(", ", Suggestions);
+            }
+            string tu = Url;
+            if (string.IsNullOrEmpty(tu))
+            {
+                tu = Durl;
+            }
+
+            if (!string.IsNullOrEmpty(tu))
+            {
+                tu = tu.Substring(0, Math.Min(tu.Length, 10));
+            }
+            return string.Format("[{0}, {1}, {2}, {3}, {4}, {5}]", Name, Artist, Genre, Category, tu, list);
         }
     }
 
@@ -43,5 +59,10 @@ namespace NL2ML.models
         public string Artist { get; set; }
         public string SongName { get; set; }
         public MediaCategory Category { get; set; }
+
+        public override string ToString()
+        {
+            return "[" + Item + ", " + Score + "]";
+        }
     }
 }

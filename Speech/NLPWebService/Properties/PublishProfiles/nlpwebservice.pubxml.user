@@ -9,6 +9,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>C:\workspace\nlpwebservice</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="bin/log4net.config">
+      <publishTime>03/25/2015 15:03:52</publishTime>
+    </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/18/2015 10:12:32</publishTime>
     </File>
@@ -19,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2015 11:44:38</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>03/20/2015 10:16:53</publishTime>
+      <publishTime>03/24/2015 13:08:36</publishTime>
     </File>
     <File Include="bin/NL2ML.dll">
-      <publishTime>03/23/2015 15:36:44</publishTime>
+      <publishTime>03/26/2015 16:31:55</publishTime>
     </File>
     <File Include="bin/NL2ML.dll.config">
       <publishTime>03/18/2015 11:27:38</publishTime>
@@ -31,7 +34,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/23/2015 11:50:47</publishTime>
     </File>
     <File Include="bin/NLPWebService.dll">
-      <publishTime>03/23/2015 15:36:46</publishTime>
+      <publishTime>03/27/2015 14:11:28</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>03/20/2015 10:16:53</publishTime>
@@ -45,11 +48,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>03/20/2015 10:16:52</publishTime>
     </File>
+    <File Include="log4net.config">
+      <publishTime>03/25/2015 15:09:38</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>03/20/2015 10:58:50</publishTime>
+      <publishTime>03/24/2015 13:08:17</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/23/2015 12:01:46</publishTime>
+      <publishTime>03/25/2015 14:50:37</publishTime>
     </File>
   </ItemGroup>
 </Project>

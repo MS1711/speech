@@ -19,6 +19,8 @@ namespace NL2ML.dbhelper
 
         MediaData GetRandomMusicByArtist(string name);
 
+        List<MediaData> GetMusicListByArtist(string artist);
+
         MediaData GetRandomRadioByCategory(string cate);
 
         MediaData GetRandomByCategory(string cate);
@@ -28,5 +30,13 @@ namespace NL2ML.dbhelper
         CorrectedInfo GetCorrectedSong(string suffix);
 
         CorrectedInfo GetCorrectedArtist(string suffix);
+
+        List<MediaData> GetMediaListByName(string suffix);
+
+        MediaData GetMusicByArtistAndSong(string artist, string song);
+
+        List<MediaData> GetMediaListByGenericQuery(Dictionary<string, string> query);
+
+        MediaData GetMediaByGenericQuery(Dictionary<string, string> query);
     }
 }

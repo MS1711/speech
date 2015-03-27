@@ -1,5 +1,9 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using NLPWebService.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,5 +61,72 @@ namespace NLPWebService.Utils
 
             return sb.ToString();
         }
+
+        public static void DumpLatestArtistAndSong(string artistpath, string songpath)
+        {
+            DumpLatestArtist(artistpath);
+            DumpLatestSong(songpath);
+        }
+
+        private static void DumpLatestSong(string songpath)
+        {
+            MongoClient client = new MongoClient(MongoDBConstants.ConnString); // connect to localhost
+            MongoServer server = client.GetServer();
+            MongoDatabase db = server.GetDatabase(MongoDBConstants.DBName);
+            MongoCollection<BsonDocument> coll = db.GetCollection(MongoDBConstants.TableMediaCollection);
+
+            using (StreamWriter sw = new StreamWriter(songpath, false, Encoding.UTF8))
+            {
+                var cursor = coll.FindAll();
+                foreach (var doc in cursor)
+                {
+                    BsonValue meta = doc["Metadata"];
+                    if (meta != null)
+                    {
+                        if (meta.ToBsonDocument().Contains("Name"))
+                        {
+                            string singer = meta["Name"].ToString();
+                            if (!string.IsNullOrEmpty(singer))
+                            {
+                                sw.WriteLine(singer.Trim());
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private static void DumpLatestArtist(string artistpath)
+        {
+            MongoClient client = new MongoClient(MongoDBConstants.ConnString); // connect to localhost
+            MongoServer server = client.GetServer();
+            MongoDatabase db = server.GetDatabase(MongoDBConstants.DBName);
+            MongoCollection<BsonDocument> coll = db.GetCollection(MongoDBConstants.TableMediaCollection);
+
+            using (StreamWriter sw = new StreamWriter(artistpath, false, Encoding.UTF8))
+            {
+                var cursor = coll.FindAll();
+                foreach (var doc in cursor)
+                {
+                    BsonValue meta = doc["Metadata"];
+                    if (meta != null)
+                    {
+                        if (meta.ToBsonDocument().Contains("Singer"))
+                        {
+                            string singer = meta["Singer"].ToString();
+                            if (!string.IsNullOrEmpty(singer))
+                            {
+                                sw.WriteLine(singer.Trim());
+                            }
+                        }
+
+                    }
+                }
+            }
+            
+        }
+
+
     }
 }

@@ -20,6 +20,7 @@ namespace NL2ML.models
         Open,
         Close,
         Play,
+        Suggestion,
         Pause,
         Resume,
         Stop,

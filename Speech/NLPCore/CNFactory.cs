@@ -54,6 +54,11 @@ namespace NLPCore
             }
         }
 
+        public static CNFactory GetInstance()
+        {
+            return instance;
+        }
+
         public static CNFactory GetInstance(string path)
         {
             return GetInstance(path, Models.ALL);
