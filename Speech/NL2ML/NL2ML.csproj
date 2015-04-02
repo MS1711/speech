@@ -84,6 +84,7 @@
     <Compile Include="plugins\nlp\MediaIntentBuilder.cs" />
     <Compile Include="plugins\nlp\NLPModule.cs" />
     <Compile Include="plugins\nlp\RobotIntentBuilder.cs" />
+    <Compile Include="plugins\nlp\SmartDeviceIntentBuilder.cs" />
     <Compile Include="plugins\nlp\WeatherIntentBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tolerance\ITolerance.cs" />
@@ -97,6 +98,10 @@
     <Compile Include="utils\WMPProxy.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{441f9056-97ee-4774-9ddc-d8f62be2746f}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NLPCore\NLPCore.csproj">
       <Project>{6d4f5be0-82df-452e-97e1-38b0e88e352b}</Project>
       <Name>NLPCore</Name>

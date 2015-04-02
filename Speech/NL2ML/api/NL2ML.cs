@@ -18,6 +18,8 @@ namespace NL2ML.api
         private static ILog nlplogger = LogManager.GetLogger("nl2ml");
         private static NL2ML instance = new NL2ML();
         private List<INL2MLModule> modules = new List<INL2MLModule>();
+        public static bool EnableVirtualSmartDevice = true;
+        public static bool EnableOnlineErrorFix = false;
 
         private NL2ML()
         {
@@ -47,12 +49,19 @@ namespace NL2ML.api
             }
 
             intents.Sort((o1, o2) => {
-                int d = o1.Action - o2.Action;
-                if (d == 0)
+                if (o1.Domain == Domains.QA || o2.Domain == Domains.QA)
                 {
-                    d = o2.Score - o1.Score;
+                    return (o1.Domain == Domains.QA ? 1 : 0) - (o1.Domain == Domains.QA ? 1 : 0);
                 }
-                return d;
+                else
+                {
+                    int d = o1.Action - o2.Action;
+                    if (d == 0)
+                    {
+                        d = o2.Score - o1.Score;
+                    }
+                    return d;
+                }
             });
 
             nlplogger.Debug("intent created: " + string.Join(", ", intents));

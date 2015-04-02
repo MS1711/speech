@@ -287,8 +287,8 @@ namespace SpeechCustomUi
                 }
                 else
                 {
-                    ans = botchoice + ans;
-                    if (!usebing) ans = "C" + ans;
+                    //ans = botchoice + ans;
+                    //if (!usebing) ans = "C" + ans;
                     var ackInfo = await getresponse2(ans);
                     ack = ackInfo.ErrorCode == 0 ? "SUCCESS" : "";
                     if (ack == "SUCCESS")
@@ -296,6 +296,10 @@ namespace SpeechCustomUi
                         Random ran = new Random();
                         int r = ran.Next(0, 7);
                         ack = feedBackWords[r];
+                        if (!string.IsNullOrEmpty(ackInfo.Msg))
+                        {
+                            ack = ackInfo.Msg;
+                        }
                     }
                     addToBlock("小娜："+ack);
                     await pronounce(resultProcess(ack));
@@ -326,47 +330,47 @@ namespace SpeechCustomUi
 
         private async void SpeakButton_Click(object sender, RoutedEventArgs e)
         {
-            string ack = "";
-            var ackInfo = await getresponse2(UserContent.Text);
-            if (ackInfo.ErrorCode == 0)
-            {
-                ack = ackInfo.Msg;
-                Random ran = new Random();
-                int r = ran.Next(0, 7);
-                if (string.IsNullOrEmpty(ack))
-                {
-                    ack = feedBackWords[r];
-                }
+            //string ack = "";
+            //var ackInfo = await getresponse2(UserContent.Text);
+            //if (ackInfo.ErrorCode == 0)
+            //{
+            //    ack = ackInfo.Msg;
+            //    Random ran = new Random();
+            //    int r = ran.Next(0, 7);
+            //    if (string.IsNullOrEmpty(ack))
+            //    {
+            //        ack = feedBackWords[r];
+            //    }
                 
-            }
-            addToBlock("小娜：" + ack);
-            await pronounce(resultProcess(ack));
+            //}
+            //addToBlock("小娜：" + ack);
+            //await pronounce(resultProcess(ack));
 
-            ////await Task.Delay(TimeSpan.FromSeconds(0.5));
-            //cancel = false;
-            ////SR.Dispose();
-            ////ListenAction.IsEnabled = true;
-            ////if (ListenAction.Visibility == Windows.UI.Xaml.Visibility.Collapsed)
-            ////{
-            //Rcn_Spk();
-            ////}
-            //CancelButton.IsEnabled = true;
-            //SpeakButton.IsEnabled = false;
-            //SpeakButton2.IsEnabled = false;
+            //await Task.Delay(TimeSpan.FromSeconds(0.5));
+            cancel = false;
+            //SR.Dispose();
+            //ListenAction.IsEnabled = true;
+            //if (ListenAction.Visibility == Windows.UI.Xaml.Visibility.Collapsed)
+            //{
+            Rcn_Spk();
+            //}
+            CancelButton.IsEnabled = true;
+            SpeakButton.IsEnabled = false;
+            SpeakButton2.IsEnabled = false;
 
-            ////if (this.cortanaPanel.Visibility == Windows.UI.Xaml.Visibility.Visible)
-            ////{
-            //StopAllMedia();
-            //this.mediaEleListen.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            //this.mediaEleListen.Play();
-            ////}
             //if (this.cortanaPanel.Visibility == Windows.UI.Xaml.Visibility.Visible)
             //{
-            //    this.UserContent2.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+            StopAllMedia();
+            this.mediaEleListen.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            this.mediaEleListen.Play();
             //}
+            if (this.cortanaPanel.Visibility == Windows.UI.Xaml.Visibility.Visible)
+            {
+                this.UserContent2.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+            }
 
-            ////string msg = getresponse("$" + "查询室内空气状况");
-            ////resultDetails.Text += msg + "\n";
+            //string msg = getresponse("$" + "查询室内空气状况");
+            //resultDetails.Text += msg + "\n";
         }
 
         

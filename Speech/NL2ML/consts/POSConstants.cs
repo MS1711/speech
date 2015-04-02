@@ -11,6 +11,7 @@ namespace NL2ML.consts
         public const string VerbMedia = "媒体动词";
         public const string VerbSearch = "查询动词";
         public const string VerbMixed = "混合动词";
+        public const string VerbSmartDevice = "家居动词";
 
         public const string SuffixStory = "故事后缀词";
         public const string SuffixRandom = "随机后缀词";
@@ -28,5 +29,10 @@ namespace NL2ML.consts
         public const string AdvAuthor = "作者的字定语词";
 
         public const string Adv = "副词";
+        public const string NounSmartDeviceLightClass = "LIGHT";
+        public const string NounSmartDeviceCurtainClass = "CURTAIN";
+        public const string NounSmartDeviceAirClass = "AIR";
+        public const string NounSmartDeviceAirpurifierClass = "airpurifier";
+        public const string NounSmartDeviceRoomClass = "ROOM";
     }
 }

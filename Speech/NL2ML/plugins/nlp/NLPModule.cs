@@ -30,6 +30,7 @@ namespace NL2ML.plugins.nlp
             builders.Add(new MediaIntentBuilder());
             builders.Add(new WeatherIntentBuilder());
             builders.Add(new WeatherIntentBuilder());
+            builders.Add(new SmartDeviceIntentBuilder());
             builders.Add(new RobotIntentBuilder());
         }
 
@@ -45,12 +46,6 @@ namespace NL2ML.plugins.nlp
             {
                 intents.AddRange(item.GetIntents(ctx));
             }
-
-            intents.Sort((o1, o2) => {
-                return o2.Score - o1.Score;
-            });
-
-            logger.Debug("Intents: " + Utils.PrintList<Intent>(intents));
 
             return intents.ToArray();
         }

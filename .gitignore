@@ -6,8 +6,7 @@
 /Speech/DeviceWebService/obj
 /Speech/SpeechCustomUi/bin/*
 /Speech/SpeechCustomUi/obj/*
-/OnlineRobot/WebContent/WEB-INF/classes/onlinerobot
-/OnlineRobot/WebContent/WEB-INF/classes/weibo4j
+/OnlineRobot/WebContent/WEB-INF/classes
 /Speech/NLPCore/obj
 /Speech/NLPCore/bin
 /Speech/NLPTest/obj

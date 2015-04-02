@@ -333,8 +333,18 @@ namespace NLPTest
                 //free talk
                 "北京到上海今天的航班"//21
             };
+
+            string[] smartDevice = new string[] { 
+                "",
+                "打开客厅的灯", //1
+                "关闭客厅的灯", //2
+                "打开餐厅的灯",//3
+                "关闭餐厅的灯",//4
+                "打开客厅的窗帘",//5
+                "关闭客厅的窗帘"//6
+            };
             NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
-            Result res = ins.Process(sample[21]);
+            Result res = ins.Process(sample[9]);
             string s = res.Msg;
         }
 

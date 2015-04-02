@@ -69,6 +69,7 @@ namespace NL2ML.mediaProvider
                     }
                     url = url.Substring(0, url.LastIndexOf("/") + 1) + dec;
                     mdata.Durl = url;
+                    mdata.Category = MediaCategory.Music;
                     logger.Debug("durl: " + url);
 
                     return mdata;

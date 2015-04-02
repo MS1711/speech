@@ -63,7 +63,7 @@ public class NLPCore {
 //    			"$北京3月7号天气如何",
 //    			"$北京3月7号到3月10号天气如何",
 //    			
-//    			"$打开客厅的灯",
+    			"$打开客厅的灯",
 //    			"$关闭客厅的灯",
 //    			"$打开空气净化器",
 //    			"$关闭空气净化器",
@@ -73,7 +73,7 @@ public class NLPCore {
 //    			"$打开王蓉两个人的罪",
 //    			"$我想听周华健的歌",
 //    			"$播放摇滚音乐",
-    			"$播放菊花台",
+//    			"$播放菊花台",
 //    			"$播放一首京剧",
 //    			"$我想听一个故事",
 //    			"$播放海的女儿",
@@ -94,7 +94,7 @@ public class NLPCore {
     
     public NLPCore()
     {  
-    	dictPath = Config.getInstance().get("model_path", "C:/dict/");
+    	dictPath = Config.getInstance().get("model_path", "C:/backup/wangtt03/dict/");
     }
     
 	private void init() {

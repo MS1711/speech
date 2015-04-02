@@ -27,5 +27,6 @@ namespace NL2ML.models
         Stop,
         TurnUp,
         TurnDown,
+        Query,
     }
 }

@@ -15,9 +15,16 @@ namespace NL2ML.handlers
 
         private IntentManager()
         {
-            handlerMap[Domains.Media] = new MediaContentHandler();
+            if (NL2ML.api.NL2ML.EnableVirtualSmartDevice)
+            {
+                handlerMap[Domains.Media] = new SmartHouseHandler();
+                handlerMap[Domains.SmartDevice] = new SmartHouseHandler();
+            }
+            else
+            {
+                handlerMap[Domains.Media] = new MediaContentHandler();
+            }
             handlerMap[Domains.Weather] = new WeatherHandler();
-            handlerMap[Domains.SmartDevice] = new SmartHouseHandler();
         }
 
         public static IntentManager Instance
@@ -38,11 +45,15 @@ namespace NL2ML.handlers
 
             foreach (var item in intent)
             {
-                Result res = defaultHandler.handle(item);
-                if (res != null && res.IsOK)
+                if (item.Domain == Domains.QA)
                 {
-                    return res;
-                } 
+                    Result res = defaultHandler.handle(item);
+                    if (res != null && res.IsOK)
+                    {
+                        return res;
+                    } 
+                }
+                
             }
             
             return new Result { IsOK = false };

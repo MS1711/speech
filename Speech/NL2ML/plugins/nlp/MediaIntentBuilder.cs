@@ -212,24 +212,28 @@ namespace NL2ML.plugins.nlp
             }
 
             ////////////////////////*********** e *****************////////////////////////////////////
-            CorrectedInfo corr = MediaInfoHelper.Instance.GetSimilarSong(raw);
-            if (!string.IsNullOrEmpty(corr.Item))
+            CorrectedInfo corr = new CorrectedInfo();
+            if (NL2ML.api.NL2ML.EnableOnlineErrorFix)
             {
-                nlplogger.Debug("consider the song name is incorrect. wrong: " + raw + ", correct: " + corr.Item);
-                data = MediaInfoHelper.Instance.GetMusicOnline(corr.Item, "");
-                if (data != null && data.IsValid())
+                corr = MediaInfoHelper.Instance.GetSimilarSong(raw);
+                if (!string.IsNullOrEmpty(corr.Item))
                 {
-                    nlplogger.Debug("get search result from web. keyword: " + corr.Item + ", item: " + data);
-                    Intent intent = new Intent();
-                    intent.Action = Actions.Suggestion;
-                    intent.Domain = Domains.Media;
-                    intent.Data = data;
-                    intent.Score = (int)(100 * corr.Score);
-                    if (intent.Score >= 60)
+                    nlplogger.Debug("consider the song name is incorrect. wrong: " + raw + ", correct: " + corr.Item);
+                    data = MediaInfoHelper.Instance.GetMusicOnline(corr.Item, "");
+                    if (data != null && data.IsValid())
                     {
-                        intent.Action = Actions.Play;
+                        nlplogger.Debug("get search result from web. keyword: " + corr.Item + ", item: " + data);
+                        Intent intent = new Intent();
+                        intent.Action = Actions.Suggestion;
+                        intent.Domain = Domains.Media;
+                        intent.Data = data;
+                        intent.Score = (int)(100 * corr.Score);
+                        if (intent.Score >= 60)
+                        {
+                            intent.Action = Actions.Play;
+                        }
+                        intents.Add(intent);
                     }
-                    intents.Add(intent);
                 }
             }
 
@@ -316,71 +320,82 @@ namespace NL2ML.plugins.nlp
             }
 
             ////////////////////////*********** d *****************////////////////////////////////////
-            nlplogger.Debug("if prefix is artist and suffix is a wrong song name.");
-            CorrectedInfo artistCorr = MediaInfoHelper.Instance.GetSimilarArtist(prefix);
-            CorrectedInfo songCorr = MediaInfoHelper.Instance.GetSimilarSong(suffix);
-
-            if (!string.IsNullOrEmpty(songCorr.Item))
+            CorrectedInfo artistCorr = new CorrectedInfo();
+            CorrectedInfo songCorr = new CorrectedInfo();
+            if (NL2ML.api.NL2ML.EnableOnlineErrorFix)
             {
-                nlplogger.Debug("if prefix is artist and suffix is a wrong song name. wrong: " + suffix + ", correct song name: " + songCorr);
-                data = MediaInfoHelper.Instance.GetMusicOnline(songCorr.Item, prefix);
-                if (data != null && data.IsValid())
+                nlplogger.Debug("if prefix is artist and suffix is a wrong song name.");
+                artistCorr = MediaInfoHelper.Instance.GetSimilarArtist(prefix);
+                songCorr = MediaInfoHelper.Instance.GetSimilarSong(suffix);
+
+                if (!string.IsNullOrEmpty(songCorr.Item))
                 {
-                    nlplogger.Debug("get search result from web. keyword: " + corr.Item + ", item: " + data);
-                    Intent intent = new Intent();
-                    intent.Action = Actions.Suggestion;
-                    intent.Domain = Domains.Media;
-                    intent.Data = data;
-                    intent.Score = (int)(100 * songCorr.Score);
-                    if (intent.Score >= 60)
+                    nlplogger.Debug("if prefix is artist and suffix is a wrong song name. wrong: " + suffix + ", correct song name: " + songCorr);
+                    data = MediaInfoHelper.Instance.GetMusicOnline(songCorr.Item, prefix);
+                    if (data != null && data.IsValid())
                     {
-                        intent.Action = Actions.Play;
+                        nlplogger.Debug("get search result from web. keyword: " + corr.Item + ", item: " + data);
+                        Intent intent = new Intent();
+                        intent.Action = Actions.Suggestion;
+                        intent.Domain = Domains.Media;
+                        intent.Data = data;
+                        intent.Score = (int)(100 * songCorr.Score);
+                        if (intent.Score >= 60)
+                        {
+                            intent.Action = Actions.Play;
+                        }
+                        intents.Add(intent);
                     }
-                    intents.Add(intent);
                 }
             }
 
             ////////////////////////*********** e *****************////////////////////////////////////
-            nlplogger.Debug("if the artist is wrong and song name is correct.");
-            if (!string.IsNullOrEmpty(artistCorr.Item))
+            if (NL2ML.api.NL2ML.EnableOnlineErrorFix)
             {
-                nlplogger.Debug("if prefix is wrong artist and suffix is correct song name. wrong: " + prefix + ", correct artist name: " + artistCorr);
-                data = MediaInfoHelper.Instance.GetMusicOnline(suffix, artistCorr.Item);
-                if (data != null && data.IsValid())
+                nlplogger.Debug("if the artist is wrong and song name is correct.");
+                if (!string.IsNullOrEmpty(artistCorr.Item))
                 {
-                    nlplogger.Debug("get search result from web. keyword: " + corr.Item + ", item: " + data);
-                    Intent intent = new Intent();
-                    intent.Action = Actions.Suggestion;
-                    intent.Domain = Domains.Media;
-                    intent.Data = data;
-                    intent.Score = (int)(100 * artistCorr.Score);
-                    if (intent.Score >= 60)
+                    nlplogger.Debug("if prefix is wrong artist and suffix is correct song name. wrong: " + prefix + ", correct artist name: " + artistCorr);
+                    data = MediaInfoHelper.Instance.GetMusicOnline(suffix, artistCorr.Item);
+                    if (data != null && data.IsValid())
                     {
-                        intent.Action = Actions.Play;
+                        nlplogger.Debug("get search result from web. keyword: " + corr.Item + ", item: " + data);
+                        Intent intent = new Intent();
+                        intent.Action = Actions.Suggestion;
+                        intent.Domain = Domains.Media;
+                        intent.Data = data;
+                        intent.Score = (int)(100 * artistCorr.Score);
+                        if (intent.Score >= 60)
+                        {
+                            intent.Action = Actions.Play;
+                        }
+                        intents.Add(intent);
                     }
-                    intents.Add(intent);
                 }
             }
 
             ////////////////////////*********** f *****************////////////////////////////////////
-            nlplogger.Debug("if the artist is wrong and song name is wrong.");
-            if (!string.IsNullOrEmpty(artistCorr.Item) && !string.IsNullOrEmpty(songCorr.Item))
+            if (NL2ML.api.NL2ML.EnableOnlineErrorFix)
             {
-                nlplogger.Debug("if prefix is wrong and suffix is wrong. wrong: " + prefix + ", " + suffix + ", correct: " + artistCorr + ", " + songCorr);
-                data = MediaInfoHelper.Instance.GetMusicOnline(songCorr.Item, artistCorr.Item);
-                if (data != null && data.IsValid())
+                nlplogger.Debug("if the artist is wrong and song name is wrong.");
+                if (!string.IsNullOrEmpty(artistCorr.Item) && !string.IsNullOrEmpty(songCorr.Item))
                 {
-                    nlplogger.Debug("get search result from web. keyword: " + songCorr.Item + ", " + artistCorr.Item + ", item: " + data);
-                    Intent intent = new Intent();
-                    intent.Action = Actions.Suggestion;
-                    intent.Domain = Domains.Media;
-                    intent.Data = data;
-                    intent.Score = Math.Min((int)(100 * artistCorr.Score), (int)(100 * songCorr.Score));
-                    if (intent.Score >= 60)
+                    nlplogger.Debug("if prefix is wrong and suffix is wrong. wrong: " + prefix + ", " + suffix + ", correct: " + artistCorr + ", " + songCorr);
+                    data = MediaInfoHelper.Instance.GetMusicOnline(songCorr.Item, artistCorr.Item);
+                    if (data != null && data.IsValid())
                     {
-                        intent.Action = Actions.Play;
+                        nlplogger.Debug("get search result from web. keyword: " + songCorr.Item + ", " + artistCorr.Item + ", item: " + data);
+                        Intent intent = new Intent();
+                        intent.Action = Actions.Suggestion;
+                        intent.Domain = Domains.Media;
+                        intent.Data = data;
+                        intent.Score = Math.Min((int)(100 * artistCorr.Score), (int)(100 * songCorr.Score));
+                        if (intent.Score >= 60)
+                        {
+                            intent.Action = Actions.Play;
+                        }
+                        intents.Add(intent);
                     }
-                    intents.Add(intent);
                 }
             }
 

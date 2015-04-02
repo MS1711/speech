@@ -55,16 +55,17 @@ function askForRenew(){
 			document.getElementById("audioplayer").src = "";
 			document.getElementById("hintmessage").style.top="500px";
 			
-					
             if (object == "MUSIC" || object == "RADIO"){
                 document.getElementById("airmessage").style.display="none";
-                if (action == "START"){
+				console.log(typeof(action));
+                if (action == 'START'){
                     //clear other audio
                     document.getElementById("radioframe").setAttribute("src","");
 
                     document.getElementById("audioplayer").setAttribute("src",url);
                     document.getElementById("audioplayer").play();
                     document.getElementById("hintmessage").style.display="";
+
                     if (object == "RADIO"){
 						 document.getElementById("nowplaying").innerHTML = "" + verbose;
 						 document.getElementById("mediaDiv").style.display = "";
@@ -74,8 +75,9 @@ function askForRenew(){
 						 MediaPlayer.controls.play();
 					}
                        
-                    else
+                    else{
                         document.getElementById("nowplaying").innerHTML = verbose;
+					}
                     document.getElementById("nowplaying").setAttribute("href",url);
 
                 }else if (action == "STOP"){
@@ -85,6 +87,7 @@ function askForRenew(){
 					MediaPlayer.URL = "";
 					MediaPlayer.controls.play();
                 }
+				
             }else if (object == "STORY"){
                 if (action == "START"){
                     document.getElementById("audioplayer").setAttribute("src","");
