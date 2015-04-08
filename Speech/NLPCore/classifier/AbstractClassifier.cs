@@ -31,5 +31,14 @@ namespace NLPCore
 
         public abstract Predict<string[]> classify(Instance instance, LabelParser.Type type, int n);
 
+        public virtual Predict<int> doClassify(Instance instance, int n)
+        {
+            return null;
+        }
+
+        public virtual Predict<string> doClassify(Instance instance, LabelParser.Type type, int n)
+        {
+            return null;
+        }
     }
 }

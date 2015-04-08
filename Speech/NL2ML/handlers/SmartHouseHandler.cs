@@ -56,7 +56,8 @@ namespace NL2ML.handlers
         private Result HandleSmartDeviceIntent(Intent intent)
         {
             SmartDeviceData data = intent.Data as SmartDeviceData;
-            if (data != null && !string.IsNullOrEmpty(data.TargetClass) && data.TargetClass.Equals("airpurifier"))
+            if (data != null && !string.IsNullOrEmpty(data.TargetClass) && 
+                (data.TargetClass.Equals("airpurifier")))
             {
                 return HandleAirControlerAction(intent);
             }

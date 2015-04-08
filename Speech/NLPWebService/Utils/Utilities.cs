@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 using NLPWebService.Models;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,8 @@ namespace NLPWebService.Utils
         {
             DumpLatestArtist(artistpath);
             DumpLatestSong(songpath);
+            DumpLatestStory(songpath + "-story");
+            DumpLatestBroadcast(songpath + "-broadcast");
         }
 
         private static void DumpLatestSong(string songpath)
@@ -77,19 +80,68 @@ namespace NLPWebService.Utils
 
             using (StreamWriter sw = new StreamWriter(songpath, false, Encoding.UTF8))
             {
-                var cursor = coll.FindAll();
+                var cursor = coll.Find(Query.EQ("Category", new BsonString("music")));
                 foreach (var doc in cursor)
                 {
-                    BsonValue meta = doc["Metadata"];
+                    BsonValue meta = doc["Name"];
                     if (meta != null)
                     {
-                        if (meta.ToBsonDocument().Contains("Name"))
+                        string singer = meta.ToString();
+                        if (!string.IsNullOrEmpty(singer))
                         {
-                            string singer = meta["Name"].ToString();
-                            if (!string.IsNullOrEmpty(singer))
-                            {
-                                sw.WriteLine(singer.Trim());
-                            }
+                            sw.WriteLine(singer.Trim());
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private static void DumpLatestStory(string songpath)
+        {
+            MongoClient client = new MongoClient(MongoDBConstants.ConnString); // connect to localhost
+            MongoServer server = client.GetServer();
+            MongoDatabase db = server.GetDatabase(MongoDBConstants.DBName);
+            MongoCollection<BsonDocument> coll = db.GetCollection(MongoDBConstants.TableMediaCollection);
+
+            using (StreamWriter sw = new StreamWriter(songpath, false, Encoding.UTF8))
+            {
+                var cursor = coll.Find(Query.EQ("Category", new BsonString("story")));
+                foreach (var doc in cursor)
+                {
+                    BsonValue meta = doc["Name"];
+                    if (meta != null)
+                    {
+                        string singer = meta.ToString();
+                        if (!string.IsNullOrEmpty(singer))
+                        {
+                            sw.WriteLine(singer.Trim());
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private static void DumpLatestBroadcast(string songpath)
+        {
+            MongoClient client = new MongoClient(MongoDBConstants.ConnString); // connect to localhost
+            MongoServer server = client.GetServer();
+            MongoDatabase db = server.GetDatabase(MongoDBConstants.DBName);
+            MongoCollection<BsonDocument> coll = db.GetCollection(MongoDBConstants.TableMediaCollection);
+
+            using (StreamWriter sw = new StreamWriter(songpath, false, Encoding.UTF8))
+            {
+                var cursor = coll.Find(Query.EQ("Category", new BsonString("radio")));
+                foreach (var doc in cursor)
+                {
+                    BsonValue meta = doc["Name"];
+                    if (meta != null)
+                    {
+                        string singer = meta.ToString();
+                        if (!string.IsNullOrEmpty(singer))
+                        {
+                            sw.WriteLine(singer.Trim());
                         }
 
                     }

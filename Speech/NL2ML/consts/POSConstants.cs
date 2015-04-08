@@ -25,6 +25,8 @@ namespace NL2ML.consts
         public const string NounTimeSpan = "时间模糊短语";
 
         public const string NounLocation = "地名";
+        public const string NounArtist = "歌手名";
+        public const string NounSong = "歌曲名";
         public const string NounName = "人名";
         public const string AdvAuthor = "作者的字定语词";
 
@@ -32,6 +34,7 @@ namespace NL2ML.consts
         public const string NounSmartDeviceLightClass = "LIGHT";
         public const string NounSmartDeviceCurtainClass = "CURTAIN";
         public const string NounSmartDeviceAirClass = "AIR";
+        public const string NounSmartDeviceStatusClass = "STATUS";
         public const string NounSmartDeviceAirpurifierClass = "airpurifier";
         public const string NounSmartDeviceRoomClass = "ROOM";
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace NLPCore
 {
+    [Serializable]
     public abstract class Pipe
     {
         /**

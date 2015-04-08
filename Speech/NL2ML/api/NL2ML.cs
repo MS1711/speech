@@ -6,6 +6,7 @@ using NL2ML.plugins;
 using NL2ML.plugins.nlp;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,9 @@ namespace NL2ML.api
         private void LoadModules()
         {
             logger.Debug("load nlp module");
-            modules.Add(new NLPModule(@"C:/workspace/nlpdictdata/", @"C:/workspace/nlpdictdata/mydict2.txt", @"C:/workspace/nlpdictdata/genredict.txt",
-                                    @"C:/workspace/nlpdictdata/verbdict2.txt", @"C:/workspace/nlpdictdata/lastdict2.txt", @"C:/workspace/nlpdictdata/devicedict2.txt"));
+            string modelPath = ConfigurationManager.AppSettings["ModelPath"];
+            modules.Add(new NLPModule(modelPath, modelPath + "mydict2.txt", modelPath + "genredict.txt",
+                                    modelPath + "verbdict2.txt", modelPath + "lastdict2.txt", modelPath + "devicedict2.txt"));
 
         }
 

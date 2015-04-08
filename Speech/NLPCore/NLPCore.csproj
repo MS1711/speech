@@ -40,7 +40,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classifier\AbstractClassifier.cs" />
+    <Compile Include="classifier\BayesClassifier.cs" />
+    <Compile Include="classifier\BayesTrainer.cs" />
+    <Compile Include="classifier\FeatureSelect.cs" />
+    <Compile Include="classifier\Heap.cs" />
+    <Compile Include="classifier\ItemFrequency.cs" />
     <Compile Include="models\AbstractHashCode.cs" />
+    <Compile Include="models\FileReader.cs" />
+    <Compile Include="models\Reader.cs" />
+    <Compile Include="pipes\CNPipe.cs" />
+    <Compile Include="pipes\StringArray2SV.cs" />
+    <Compile Include="pipes\Strings2StringArray.cs" />
+    <Compile Include="pipes\Target2Label.cs" />
     <Compile Include="tagger\AbstractTagger.cs" />
     <Compile Include="inference\AbstractViterbi.cs" />
     <Compile Include="alphabet\AlphabetFactory.cs" />
@@ -48,6 +59,7 @@
     <Compile Include="models\CharClassDictionary.cs" />
     <Compile Include="templets\CharClassTemplet.cs" />
     <Compile Include="templets\CharInStringTemplet.cs" />
+    <Compile Include="utils\AbstractExtractor.cs" />
     <Compile Include="utils\Chars.cs" />
     <Compile Include="CNFactory.cs" />
     <Compile Include="inference\ConstraintViterbi.cs" />
@@ -65,6 +77,7 @@
     <Compile Include="models\InstanceSet.cs" />
     <Compile Include="models\ISparseVector.cs" />
     <Compile Include="alphabet\LabelAlphabet.cs" />
+    <Compile Include="utils\Graph.cs" />
     <Compile Include="utils\LabelParser.cs" />
     <Compile Include="classifier\Linear.cs" />
     <Compile Include="inference\LinearViterbi.cs" />
@@ -85,6 +98,9 @@
     <Compile Include="templets\Templet.cs" />
     <Compile Include="templets\TempletGroup.cs" />
     <Compile Include="models\TPredict.cs" />
+    <Compile Include="utils\StopWords.cs" />
+    <Compile Include="utils\Vertex.cs" />
+    <Compile Include="utils\WordExtract.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

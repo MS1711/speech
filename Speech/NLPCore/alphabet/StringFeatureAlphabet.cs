@@ -97,17 +97,17 @@ namespace NLPCore
 
         public void setStopIncrement(bool b)
         {
-            throw new NotImplementedException();
+            frozen = b;
         }
 
         public int lookupIndex(string str)
         {
-            throw new NotImplementedException();
+            return lookupIndex(str, 1);
         }
 
         public int size()
         {
-            throw new NotImplementedException();
+            return last;
         }
 
         public void clear()

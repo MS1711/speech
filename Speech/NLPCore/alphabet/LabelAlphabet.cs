@@ -70,7 +70,7 @@ namespace NLPCore
 
         public void setStopIncrement(bool b)
         {
-            throw new NotImplementedException();
+            this.frozen = b;
         }
 
         public int lookupIndex(string str)

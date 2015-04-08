@@ -39,6 +39,18 @@ namespace NLPCore
             return new AlphabetFactory();
         }
 
+        public int getLabelSize()
+        {
+            return DefaultLabelAlphabet().size();
+        }
+        /**
+         * 得到特征数量 f(x,y)
+         * @return 特征数量 
+         */
+        public int getFeatureSize()
+        {
+            return DefaultFeatureAlphabet().size();
+        }
 
         public LabelAlphabet DefaultLabelAlphabet()
         {
@@ -93,6 +105,16 @@ namespace NLPCore
                 }
             }
             return (IFeatureAlphabet)alphabet;
+        }
+
+        public void setStopIncrement(bool b)
+        {
+            IEnumerator<string> it = maps.Keys.GetEnumerator();
+            while (it.MoveNext())
+            {
+                string key = it.Current;
+                maps[key].setStopIncrement(b);
+            }
         }
     }
 }

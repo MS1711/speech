@@ -87,8 +87,18 @@ namespace NL2ML.plugins.nlp
         private string[] GetDeviceInfo(Context context)
         {
             string[] info = new string[2];
-            string[] supportedTargets = {POSConstants.NounSmartDeviceAirClass,
-                                        POSConstants.NounSmartDeviceAirpurifierClass,
+
+            if (POSUtils.HasPOS(context.Tags, POSConstants.NounSmartDeviceAirClass) &&
+                POSUtils.HasPOS(context.Tags, POSConstants.NounSmartDeviceStatusClass) &&
+                POSUtils.HasPOS(context.Tags, POSConstants.VerbSearch))
+            {
+                info[0] = POSUtils.GetWordByPOS(context.Tags, POSConstants.NounSmartDeviceAirClass);
+                info[1] = POSConstants.NounSmartDeviceAirpurifierClass;
+
+                return info;
+            }
+
+            string[] supportedTargets = {POSConstants.NounSmartDeviceAirpurifierClass,
                                         POSConstants.NounSmartDeviceCurtainClass,
                                         POSConstants.NounSmartDeviceLightClass};
             foreach (var item in supportedTargets)
