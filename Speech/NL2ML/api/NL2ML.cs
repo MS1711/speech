@@ -24,7 +24,7 @@ namespace NL2ML.api
 
         private NL2ML()
         {
-            LoadModules();
+            
         }
 
         public static NL2ML Instance
@@ -34,6 +34,11 @@ namespace NL2ML.api
 
         private void LoadModules()
         {
+            if (modules.Count > 0)
+            {
+                return;
+            }
+
             logger.Debug("load nlp module");
             string modelPath = ConfigurationManager.AppSettings["ModelPath"];
             modules.Add(new NLPModule(modelPath, modelPath + "mydict2.txt", modelPath + "genredict.txt",
@@ -41,8 +46,17 @@ namespace NL2ML.api
 
         }
 
+        public Task<Result> ProcessAsync(string input)
+        {
+            return Task.Run<Result>(() =>
+            {
+                return Process(input);
+            });
+        }
+
         public Result Process(string input)
         {
+            LoadModules();
             logger.Debug("processing input string: " + input);
             List<Intent> intents = new List<Intent>();
             foreach (var item in modules)

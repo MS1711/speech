@@ -2,6 +2,7 @@
 /NLPWebService/build
 /Speech/CommonLib/obj
 /Speech/CommonLib/bin
+/Speech/TestResults
 /Speech/DeviceWebService/bin
 /Speech/DeviceWebService/obj
 /Speech/SpeechCustomUi/bin/*
@@ -20,3 +21,5 @@
 /Speech/NL2MLService/bin
 /Speech/NL2MLService/obj
 /Speech/packages
+/Speech/VoiceReceiver/obj
+/Speech/VoiceReceiver/bin

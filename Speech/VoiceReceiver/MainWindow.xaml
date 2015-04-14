@@ -1,0 +1,40 @@
+﻿<Window x:Class="VoiceReceiver.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Background="Black" PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Window_PreviewMouseLeftButtonUp" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
+    <Grid>
+        <Grid Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="0"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" x:Name="resultDetails2" TextWrapping="Wrap" FontSize="25" Foreground="White"/>
+                <MediaElement Grid.RowSpan="2" x:Name="mediaEleCalm" Source="material/calm.mp4" Visibility="Visible" UnloadedBehavior="Manual" MediaEnded="mediaEleCalm_MediaEnded"/>
+                <MediaElement Grid.RowSpan="2" x:Name="mediaEleListen" Source="material/CalmListening.mp4" Visibility="Collapsed" UnloadedBehavior="Manual" MediaEnded="mediaEleListen_MediaEnded"/>
+                <MediaElement Grid.RowSpan="2" x:Name="mediaEleThink" Source="material/CalmThinking.mp4" Visibility="Collapsed" UnloadedBehavior="Manual" MediaEnded="mediaEleThink_MediaEnded"/>
+                <MediaElement Grid.RowSpan="2" x:Name="mediaEleSpeak" Source="material/CalmSpeaking.mp4" Visibility="Collapsed" UnloadedBehavior="Manual" MediaEnded="mediaEleSpeak_MediaEnded"/>
+                <MediaElement x:Name="media" Visibility="Collapsed" UnloadedBehavior="Manual" LoadedBehavior="Manual" MediaEnded="media_MediaEnded"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click"/>
+                <TextBox x:Name="UserContent2" Grid.Column="1" IsReadOnly="True"/>
+                <Button x:Name="SpeakButton2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PreviewMouseLeftButtonDown="SpeakButton2_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="SpeakButton2_PreviewMouseLeftButtonUp"/>
+            </Grid>
+        </Grid>
+        <Grid Visibility="Collapsed">
+            
+        </Grid>
+
+    </Grid>
+
+</Window>

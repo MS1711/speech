@@ -92,6 +92,26 @@ namespace NL2ML.plugins.nlp
             string keyword = ctx.RawString;
             nlplogger.Debug("key word after verb: " + keyword);
 
+
+            //处理：随便来一个这种没有宾语后缀的
+            if (string.IsNullOrEmpty(keyword) && POSUtils.HasPOS(tags, POSConstants.SuffixRandom))
+            {
+                logger.Debug("get from local with random music");
+                MediaData data = MediaInfoHelper.Instance.GetRandomMediaByCategory("music");
+                if (data != null && data.IsValid())
+                {
+                    logger.Debug("get from local with random music: " + data);
+                    Intent intent = new Intent();
+                    intent.Action = Actions.Play;
+                    intent.Domain = Domains.Media;
+                    intent.Data = data;
+                    intent.Score = 90;
+                    intents.Add(intent);
+
+                    return intents;
+                }
+            }
+
             //try to process the whole word
             nlplogger.Debug("try to process keyword : " + keyword + " as whole word.");
             intents.AddRange(ProcessMediaPlainText(ctx, ""));
@@ -155,6 +175,26 @@ namespace NL2ML.plugins.nlp
              *      
              */
 
+            ////////////////////////*********** c *****************////////////////////////////////////
+            query.Clear();
+            string[] genres = POSUtils.GetWordsByPOS(tags, POSConstants.NounGenre);
+            if (genres != null && genres.Length > 0)
+            {
+                if (!string.IsNullOrEmpty(category))
+                {
+                    query["Category"] = category;
+                }
+                query["Metadata.Genre"] = genres[0];
+                query["Mode"] = "S";
+                nlplogger.Debug("consider the whole word as music genre. " + Utils.DumpDict(query));
+                List<Intent> ins = GetIntentsByKeywords(query);
+                foreach (var item in ins)
+                {
+                    item.Score = (int)(100 * ((float)1 / tags.Length));
+                }
+                intents.AddRange(ins);
+            }
+
             ////////////////////////*********** a *****************////////////////////////////////////
             query.Clear();
             query["Name"] = raw;
@@ -176,26 +216,6 @@ namespace NL2ML.plugins.nlp
                 query["Mode"] = "S";
                 nlplogger.Debug("consider the whole word as category. " + Utils.DumpDict(query));
                 intents.AddRange(GetIntentsByKeywords(query));
-            }
-
-            ////////////////////////*********** c *****************////////////////////////////////////
-            query.Clear();
-            string[] genres = POSUtils.GetWordsByPOS(tags, POSConstants.NounGenre);
-            if (genres != null && genres.Length > 0)
-            {
-                if (!string.IsNullOrEmpty(category))
-                {
-                    query["Category"] = category;
-                }
-                query["Metadata.Genre"] = genres[0];
-                query["Mode"] = "S";
-                nlplogger.Debug("consider the whole word as music genre. " + Utils.DumpDict(query));
-                List<Intent> ins = GetIntentsByKeywords(query);
-                foreach (var item in ins)
-                {
-                    item.Score = (int)(100 * ((float)1 / tags.Length));
-                }
-                intents.AddRange(ins);
             }
 
             ////////////////////////*********** d *****************////////////////////////////////////

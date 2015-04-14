@@ -32,9 +32,28 @@ namespace NLPTest
 
         static void Main(string[] args)
         {
-            Sample19();
+            Sample3();
             Console.Read();
         }
+
+        //static void Main(string[] args)
+        //{
+        //    while (true)
+        //    {
+        //        string[] test = new string[] { 
+        //            "https://speech.platform.bing.com/recognize",
+        //            "c:\\workspace\\result.wav"
+        //        };
+        //        SpeechSample.Program.Process(test);
+
+        //        string key = Console.ReadLine();
+        //        if (key.Equals("q"))
+        //        {
+        //            return;
+        //        }
+        //    }
+
+        //}
 
         private static void Sample19()
         {
@@ -136,7 +155,8 @@ namespace NLPTest
                 "我想听张艾嘉的光阴的故事", //20
 
                 //free talk
-                "北京到上海今天的航班"//21
+                "北京到上海今天的航班",//21
+                "随便来一首"//22
             };
 
             string[] smartDevice = new string[] { 
@@ -152,7 +172,7 @@ namespace NLPTest
                 "查询室内空气状况"//9
             };
             NL2ML.api.NL2ML ins = NL2ML.api.NL2ML.Instance;
-            Result res = ins.Process(sample[9]);
+            Result res = ins.Process(sample[20]);
             string s = res.Msg;
         }
 
